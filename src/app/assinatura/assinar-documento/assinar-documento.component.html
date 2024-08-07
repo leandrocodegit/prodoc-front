@@ -1,0 +1,46 @@
+<div class="box-assinatura">
+    <div class="box-assinatura-item" style="width: 70%;">
+        <iframe class="pdf-container" src="/assets/doc.pdf"></iframe>
+
+    </div>
+    <div class="box-assinatura-detalhes" style="width: 30%;">
+        <p style="text-align: center;font-weight: 600;margin-top:20px">Dados do assinante</p>
+
+        <div class="box-assinatura-detalhes-assinante">
+            <div class="box-assinatura-detalhes-assinante-item">
+                <label for="">Nome: </label>
+                <span>Leandro Pereira de Oliveira</span>
+            </div>
+            <div class="box-assinatura-detalhes-assinante-item">
+                <label for="">Documento: </label>
+                <span>089.877.826-38</span>
+            </div>
+            <div class="box-assinatura-detalhes-assinante-item">
+                <label for="">Data de nascimento: </label>
+                <span>15-05-1988</span>
+            </div>
+            <div class="box-assinatura-detalhes-assinante-item">
+                <label for="">Email: </label>
+                <span>{{'leandro@gmail.com'}}</span>
+            </div>
+        </div>
+        <div class="box-assinatura-status">
+            <p-timeline [value]="events"  styleClass="customized-timeline">
+                <ng-template pTemplate="marker" let-event>
+                    <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
+                        <i [ngClass]="event.icon"></i>
+                    </span>
+                </ng-template>
+                
+                <ng-template pTemplate="content" let-event>
+                    <p style="font-weight: 600; margin: 0;">Assinado por Leandro</p>
+                    <span>06-08-2024</span>
+                </ng-template>
+            </p-timeline>
+        </div>
+        <div class="box-assinatura-assinar">
+
+            <button type="button" class="btn btn-info">Assinar documento</button>
+        </div>
+    </div>
+</div>
