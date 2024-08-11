@@ -1,0 +1,13 @@
+<p-timeline *ngIf="fluxos.length > 2" [value]="fluxos" styleClass="customized-timeline">
+  <ng-template pTemplate="marker" let-etapa>
+    <span class="custom-marker shadow-2" [style.backgroundColor]="etapa.icone.color">
+      <i [ngClass]="etapa.icone.icon"></i>
+    </span>
+  </ng-template>
+  <ng-template pTemplate="content" let-etapa>
+    <div>
+      <p style="    font-weight: 600;font-size: 14px;margin: 2px 0;">{{etapa.nome}}</p>
+      <p *ngIf="etapa.descricao" [innerHTML]="etapa.descricao"></p>
+    </div>
+  </ng-template>
+</p-timeline>

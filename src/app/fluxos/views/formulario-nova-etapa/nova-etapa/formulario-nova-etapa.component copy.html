@@ -1,0 +1,37 @@
+<div class="box-form-regra">
+  <div class="mb-4">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input matInput placeholder="Descrição curta" [(ngModel)]="etapa.descricao">
+      </mat-form-field>
+  </div>
+  <div class="mb-4">
+      <label for="tipo" class="form-label">Tipo</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select disableRipple [(ngModel)]="etapa.tipo_id">
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+            {{tipo.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <a>{{etapa.descricao}}</a>
+
+  <a>{{etapa.tipo_id}}</a>
+  <div *ngIf="etapa.tipo_id == 2" class="mb-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Assinaturas</mat-label>
+      <mat-select [formControl]="toppings" multiple>
+        <mat-select-trigger>
+          {{toppings.value?.[0] || ''}}
+          <span *ngIf="(toppings.value?.length || 0) > 1">
+            (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'Assinatura' : 'Assinaturas'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let assinante of assinantes" [value]="assinante.id">{{assinante.descricao}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+ <app-salvar-fechar (fecharEmit)="fecharEvent()" (salvarEmit)="salvarEvent()"></app-salvar-fechar>
+</div>

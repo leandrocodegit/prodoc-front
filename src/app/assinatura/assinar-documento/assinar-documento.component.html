@@ -1,46 +1,64 @@
 <div class="box-assinatura">
-    <div class="box-assinatura-item" style="width: 70%;">
-        <iframe class="pdf-container" src="/assets/doc.pdf"></iframe>
+  <div *ngIf="todosdocumentosAssinados()" class="box-assinatura-item-assinado">
+    <span class="material-symbols-outlined">
+      check_circle
+    </span>
+    <p>Obrigado, seus documentos foram assinados com sucesso.</p>
+  </div>
+  <div *ngIf="documentoSelecionado" class="box-assinatura-item" style="width: 80%;">
+    <ngx-extended-pdf-viewer [src]="documentoSelecionado.fileName" [textLayer]="true"
 
+    [height]="'100vh'"
+    (pagesLoaded)="onPagesLoaded($event)">
+    </ngx-extended-pdf-viewer>
+  </div>
+  <div *ngIf="!todosdocumentosAssinados()" class="box-assinatura-detalhes" style="width: 20%;">
+    <div class="box-assinatura-detalhes-item" style="margin: 0;">
+      <img src="assets/pr-sp.jpeg" width="100">
     </div>
-    <div class="box-assinatura-detalhes" style="width: 30%;">
-        <p style="text-align: center;font-weight: 600;margin-top:20px">Dados do assinante</p>
-
-        <div class="box-assinatura-detalhes-assinante">
-            <div class="box-assinatura-detalhes-assinante-item">
-                <label for="">Nome: </label>
-                <span>Leandro Pereira de Oliveira</span>
-            </div>
-            <div class="box-assinatura-detalhes-assinante-item">
-                <label for="">Documento: </label>
-                <span>089.877.826-38</span>
-            </div>
-            <div class="box-assinatura-detalhes-assinante-item">
-                <label for="">Data de nascimento: </label>
-                <span>15-05-1988</span>
-            </div>
-            <div class="box-assinatura-detalhes-assinante-item">
-                <label for="">Email: </label>
-                <span>{{'leandro@gmail.com'}}</span>
-            </div>
+    <div class="box-assinatura-detalhes-item">
+      <div class="box-assinatura-detalhes-assinante">
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Nome: </label>
+          <span>Leandro Pereira de Oliveira</span>
         </div>
-        <div class="box-assinatura-status">
-            <p-timeline [value]="events"  styleClass="customized-timeline">
-                <ng-template pTemplate="marker" let-event>
-                    <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
-                        <i [ngClass]="event.icon"></i>
-                    </span>
-                </ng-template>
-                
-                <ng-template pTemplate="content" let-event>
-                    <p style="font-weight: 600; margin: 0;">Assinado por Leandro</p>
-                    <span>06-08-2024</span>
-                </ng-template>
-            </p-timeline>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Documento: </label>
+          <span>089.877.826-38</span>
         </div>
-        <div class="box-assinatura-assinar">
-
-            <button type="button" class="btn btn-info">Assinar documento</button>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Data de nascimento: </label>
+          <span>15-05-1988</span>
         </div>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Email: </label>
+          <span>{{'leandro@gmail.com'}}</span>
+        </div>
+      </div>
     </div>
+    <div class="box-assinatura-detalhes-item box-assinatura-status">
+      <p-timeline [value]="documentos" styleClass="customized-timeline">
+        <ng-template pTemplate="marker" let-documento>
+          <span class="custom-marker shadow-2" [style.backgroundColor]="documento.color">
+            <i [ngClass]="documento.icon"></i>
+          </span>
+        </ng-template>
+
+        <ng-template pTemplate="content" let-documento>
+          <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
+            {{documento.nome}}
+          </p>
+          <span
+            style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
+        </ng-template>
+      </p-timeline>
+    </div>
+    <div (click)="assinar()" class="box-assinatura-item box-assinatura-item-documento">
+      <span class="material-symbols-outlined">
+        {{documentoSelecionado ? 'encrypted' : 'check'}}
+      </span>
+      <p *ngIf="documentoSelecionado" style="margin: 0 10px;">Assinar {{documentoSelecionado.nome.toLowerCase()}}</p>
+      <p *ngIf="!documentoSelecionado" style="margin: 0 10px;">Finalizar</p>
+    </div>
+  </div>
 </div>

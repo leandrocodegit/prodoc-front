@@ -1,0 +1,33 @@
+<div class="head-list">
+  <p>
+    {{titulo}}</p>
+  <span (click)="adicionar()" class="material-symbols-outlined">
+    add_box
+  </span>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width: 70px;">Ativo</th>
+      <th>Descrição</th>
+      <th *ngIf="viewAcoes"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of itens">
+      <td style="min-width: 20px;">
+        <input (click)="removeIten(item)" class="form-check-input checkbox" type="checkbox" value="{{item.id}}"
+          [checked]="item.ativo">
+      </td>
+      <td>{{item.descricao}}</td>
+      <td *ngIf="viewAcoes" class="td-icons">
+        <span class="material-symbols-outlined">
+          delete
+        </span>
+        <span (click)="editarIten(item)" class="material-symbols-outlined">
+          edit_square
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

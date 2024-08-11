@@ -1,0 +1,77 @@
+<div class="box-assinatura">
+  <div *ngIf="todosdocumentosAssinados()" class="box-assinatura-item-assinado">
+    <span class="material-symbols-outlined">
+      check_circle
+    </span>
+    <p>Obrigado, seus documentos foram assinados com sucesso.</p>
+  </div>
+  <div *ngIf="documentoSelecionado && intens.length" class="box-assinatura-item" style="width: 20%;padding: 10px;background: #454545;height: 98vh;
+    overflow: auto;">
+    <h4 style="color: white;">Resultados:</h4>
+    <ol class="list-group list-group-numbered">
+      <li (click)="linkPesquisa(result)" *ngFor="let result of intens" class="list-group-item list-group-item-action"
+        style="padding: 6px;cursor: pointer;"> {{ result }}</li>
+    </ol>
+  </div>
+  <div *ngIf="documentoSelecionado" class="box-assinatura-item" style="width: 80%;padding: 15px;">
+    <div class="pesquisa form-control" style="width: 300px;margin: auto;display: flex;justify-content: space-between;">
+      <input (input)="search($event,false)" style="border: none;outline: none;" placeholder="Pesquisar no documento"
+        type="text">
+      <span class="material-symbols-outlined">
+        search
+      </span>
+    </div>
+    <pdf-viewer *ngIf="documentoSelecionado" [src]="documentoSelecionado.fileName"
+      (page-rendered)="onPageRendered($event)" [render-text]="true" [original-size]="true"
+      style="width: 100%; height: 92vh"></pdf-viewer>
+  </div>
+  <div *ngIf="!todosdocumentosAssinados()" class="box-assinatura-detalhes" style="width: 20%;">
+    <div class="box-assinatura-detalhes-item" style="margin: 0;">
+      <img src="assets/pr-sp.jpeg" width="100">
+    </div>
+    <div class="box-assinatura-detalhes-item">
+      <div class="box-assinatura-detalhes-assinante">
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Nome: </label>
+          <span>Leandro Pereira de Oliveira</span>
+        </div>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Documento: </label>
+          <span>089.877.826-38</span>
+        </div>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Data de nascimento: </label>
+          <span>15-05-1988</span>
+        </div>
+        <div class="box-assinatura-detalhes-assinante-item">
+          <label for="">Email: </label>
+          <span>{{'leandro@gmail.com'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="box-assinatura-detalhes-item box-assinatura-status">
+      <p-timeline [value]="documentos" styleClass="customized-timeline">
+        <ng-template pTemplate="marker" let-documento>
+          <span class="custom-marker shadow-2" [style.backgroundColor]="documento.color">
+            <i [ngClass]="documento.icon"></i>
+          </span>
+        </ng-template>
+
+        <ng-template pTemplate="content" let-documento>
+          <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
+            {{documento.nome}}
+          </p>
+          <span
+            style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
+        </ng-template>
+      </p-timeline>
+    </div>
+    <div (click)="assinar()" class="box-assinatura-item box-assinatura-item-documento">
+      <span class="material-symbols-outlined">
+        {{documentoSelecionado ? 'encrypted' : 'check'}}
+      </span>
+      <p *ngIf="documentoSelecionado" style="margin: 0 10px;">Assinar {{documentoSelecionado.nome.toLowerCase()}}</p>
+      <p *ngIf="!documentoSelecionado" style="margin: 0 10px;">Finalizar</p>
+    </div>
+  </div>
+</div>

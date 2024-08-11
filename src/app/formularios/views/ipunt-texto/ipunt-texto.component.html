@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let field of fields">
+    <ng-container [ngSwitch]="field.type">
+      <app-endereco *ngSwitchCase="'endereco'" [field]="field" [form]="form"></app-endereco>
+      <app-input-field *ngSwitchCase="'text'" [field]="field" [form]="form"></app-input-field>
+      <app-input-field *ngSwitchCase="'number'" [field]="field" [form]="form"></app-input-field>
+      <app-input-field *ngSwitchCase="'email'" [field]="field" [form]="form"></app-input-field>
+      <app-input-field *ngSwitchCase="'password'" [field]="field" [form]="form"></app-input-field>
+      <app-input-field *ngSwitchCase="'tel'" [field]="field" [form]="form"></app-input-field>
+      <app-checkbox-field *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></app-checkbox-field>
+      <app-select-field *ngSwitchCase="'select'" [field]="field" [form]="form"></app-select-field>
+      <app-textarea-field *ngSwitchCase="'textarea'" [field]="field" [form]="form"></app-textarea-field>
+      <app-file-field *ngSwitchCase="'file'" [field]="field" [form]="form"></app-file-field>
+      <app-cordenadas-field *ngSwitchCase="'cordenadas'" [field]="field" [form]="form"></app-cordenadas-field>
+    </ng-container>
+  </ng-container>
+  <button *ngIf="viewSubmit" type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,34 @@
+.disableZoon {
+  pointer-events: none;
+}
+
+.map-container{
+ box-sizing: border-box;
+}
+
+.box-icon{
+ margin-top: 8px;
+}
+
+.box-icon-map{
+ padding-bottom: 50px;
+}
+
+.box-content{
+ height: 100%;
+}
+
+.box-content-map{
+ height: 100%!important;
+ width: 100vw;
+ position: relative;
+}
+
+.box-container{
+ position: relative;
+}
+
+#map{
+ height: 70vh;
+ outline: none;
+}

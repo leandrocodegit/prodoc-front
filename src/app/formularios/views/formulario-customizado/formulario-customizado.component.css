@@ -1,0 +1,15 @@
+.box-formulario-customizado {
+  display: flex;
+}
+
+.box-formulario-customizado-item {
+  padding: 20px;
+}
+
+.reload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

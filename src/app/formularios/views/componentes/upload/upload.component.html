@@ -1,0 +1,24 @@
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>{{field.label}}</label>
+  <div class="componente-customizado-icon">
+    <input [formControlName]="field.name" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid && isTouched" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid && isTouched" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name])">
+      {{ field.label }} é obrigatório.
+    </div>
+  </div>
+</div>
+
+<div class="form-check componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>{{ field.label }}</label>
+  <div class="componente-customizado-icon">
+    <textarea [formControlName]="field.name" class="form-control"></textarea>
+    <span *ngIf="isValid && isTouched" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+.box-fluxo-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.box-fluxo-item {
+  width: 50%;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+p {
+  margin: 0;
+}
+
+.box-etapas-container:nth-child(even) {
+  background: #fafafa;
+}
+
+.box-etapas-container {
+  display: flex;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.box-etapas-item {
+  padding: 0 10px;
+}
+
+.box-etapas-item p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #525252;
+}
+
+.box-etapas-item span {
+  color: #35aec3;
+  font-weight: 200;
+}
+
+.box-etapas-item-indice {
+  display: flex;
+  align-items: center;
+  background: #4e808b;
+  color: white;
+  font-weight: 500;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 5px 0px 0 5px;
+}
+
+.box-etapas-container:hover .box-etapas-item-indice {
+  background: salmon;
+  color: white;
+}
+
+
+.box-fluxo-item {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px 2px #e1e1e152;
+}
+
+.box-fluxo-item label {
+  margin-bottom: 15px;
+}
+
+.box-titulo {
+  display: flex;
+  border: solid rgb(230, 230, 230) thin;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.box-titulo label {
+  margin: 0 10px;
+}
+
+::ng-deep .p-timeline-event-opposite {
+  display: none;
+}

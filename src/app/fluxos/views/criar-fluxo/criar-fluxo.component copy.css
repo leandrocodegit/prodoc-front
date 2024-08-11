@@ -1,0 +1,53 @@
+
+
+.box-fluxo-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.box-fluxo-item {
+  width: 50%;
+  flex-grow: 1;
+}
+
+.box-etapas-container:nth-child(even) {
+  background: #fafafa;
+}
+
+.box-etapas-container {
+  display: flex;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.box-etapas-item {
+  padding: 7px;
+}
+
+.box-etapas-item p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #525252;
+}
+
+.box-etapas-item span {
+  color: #b27777;
+}
+
+.box-etapas-item-indice {
+  display: flex;
+  align-items: center;
+  background: #7cb1f5;
+  color: white;
+  font-weight: 500;
+  padding: 15px;
+  font-size: 20px;
+}
+
+
+.box-fluxo-item{
+  border: solid salmon;
+}

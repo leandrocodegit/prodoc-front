@@ -1,0 +1,99 @@
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>{{field.label}}</label>
+  <br>
+  <label>Cep</label>
+  <div class="componente-customizado-icon">
+    <input (input)="consultaCep($event)" [formControlName]="field.name + 'cep'" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid(field.name + 'cep')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'cep')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'cep'])">
+      Cep é obrigatório.
+    </div>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Rua/Av</label>
+  <div class="componente-customizado-icon">
+    <input [formControlName]="field.name + 'street'" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid(field.name + 'street')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'street')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'street'])">
+      Rua/Av é obrigatório.
+    </div>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Numero</label>
+  <div class="componente-customizado-icon">
+    <input [formControlName]="field.name + 'numero'" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid(field.name + 'numero')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'numero')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'numero'])">
+      Numero é obrigatório.
+    </div>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Bairro</label>
+  <div class="componente-customizado-icon">
+    <input [formControlName]="field.name + 'neighborhood'" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid(field.name + 'neighborhood')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'neighborhood')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'neighborhood'])">
+      Bairro é obrigatório.
+    </div>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Complemento</label>
+  <div class="componente-customizado-icon">
+    <input [formControlName]="field.name + 'complemento'" [type]="field.type" class="form-control input-cusomizado" />
+    <span *ngIf="isValid(field.name + 'neighborhood')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Estado</label>
+  <div class="componente-customizado-icon">
+    <select [formControlName]="field.name + 'state'" class="form-select input-cusomizado">
+      <option *ngFor="let estado of estados" [value]="estado.sigla">{{estado.nome}}</option>
+    </select>
+    <span *ngIf="isValid(field.name + 'state')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'state')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'state'])">
+      Estado é obrigatório.
+    </div>
+  </div>
+</div>
+<div class="componente-customizado" *ngIf="form" [formGroup]="form">
+  <label>Cidade</label>
+  <div class="componente-customizado-icon">
+    <select [formControlName]="field.name + 'city'" class="form-select input-cusomizado">
+      <option *ngFor="let cidade of cidades" [value]="cidade.nome">{{cidade.nome}}</option>
+    </select>
+    <span *ngIf="isValid(field.name + 'city')" class="material-symbols-outlined">
+      task_alt
+    </span>
+  </div>
+  <div *ngIf="!isValid(field.name + 'city')" class="error-message">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name + 'city'])">
+      Cidade é obrigatório.
+    </div>
+  </div>
+</div>

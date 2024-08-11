@@ -1,10 +1,10 @@
 body {
     font-family: sans-serif!important;
+    overflow: hidden!important;
 }
 
 .pdf-container {
     width: 100%;
-    height: 100vh;
     border: none;
 }
 
@@ -12,14 +12,16 @@ body {
     display: flex;
 }
 
-.box-assinatura-item {}
+.box-assinatura-detalhes-item {
+  margin: 10px;
+}
 
 .box-assinatura-detalhes-assinante {
     display: flex;
     flex-direction: column;
     border: solid rgb(218, 218, 218) thin;
     border-radius: 5px;
-    padding: 15px;			
+    padding: 15px;
     background: #46a2bd;
 }
 
@@ -33,21 +35,64 @@ body {
 .box-assinatura-detalhes{
     display: flex;
     flex-direction: column;
-    margin: 0 15px;
+    align-items: center;
 }
 
 .box-assinatura-assinar{
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: center;
 }
-.box-assinatura-status{
-    margin-top: 50px;
-}
 
 .box-assinatura-detalhes-assinante-item label{
-    font-weight: 500;
+    font-weight: 300;
     text-align: left;
+    font-size: 12px;
+}
+
+.box-assinatura-detalhes-assinante-item span{
+  font-weight: 100;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.box-assinatura-item-assinado{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+.box-assinatura-item-assinado span{
+  font-size: 100px;
+}
+
+p{
+  font-weight: 500;
+}
+
+.box-assinatura-item-assinado .material-symbols-outlined {
+  color: #41d287;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.box-assinatura-item-documento{
+  display: flex;
+  background: #1369e7;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.box-assinatura-item-documento:hover{
+  background: #75315c;
 }
 
 .custom-marker {
@@ -61,8 +106,8 @@ body {
     z-index: 1;
 }
 
-::ng-deep .p-timeline-event-opposite { 
-        display: none!important; 
+::ng-deep .p-timeline-event-opposite {
+        display: none!important;
 }
 
 ::ng-deep {
@@ -72,12 +117,26 @@ body {
     }
 }
 
+::ng-deep .custom-marker{
+  width: 20px!important;
+  height: 20px!important;
+}
+
+::ng-deep .pi{
+  line-height: 0;
+  font-size: 8px!important;
+}
+
+::ng-deep .p-timeline-event {
+    min-height: 53px!important;
+}
+
 @media screen and (max-width: 960px) {
     ::ng-deep {
         .customized-timeline {
             .p-timeline-event:nth-child(even) {
                 flex-direction: row !important;
-                
+
                 .p-timeline-event-content {
                     text-align: left !important;
                 }

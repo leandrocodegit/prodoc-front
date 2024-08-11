@@ -1,0 +1,79 @@
+<div class="mb-4" style="min-width: 500px;padding: 20px;">
+  <div class="p-2">
+  <label for="Tipo">Tipo</label>
+  <select class="form-select" [(ngModel)]="field.type">
+    <option value="textarea">Area de texto</option>
+    <option value="checkbox">Caixa de seleção</option>
+    <option value="cordenadas">Cordenadas</option>
+    <option value="file">Arquivo</option>
+     <option value="email">Email</option>
+    <option value="select">Lista de Opções</option>
+    <option value="number">Numero</option>
+    <option value="password">Senha</option>
+    <option value="tel">Telefone</option>
+    <option value="text">Texto</option>
+  </select>
+</div>
+<div *ngIf="field.type === 'select'" class="p-2">
+  <div class="head-list">
+    <p>Opções</p>
+    <span (click)="novaOpcao()" class="material-symbols-outlined">
+      add_box
+    </span>
+  </div>
+  <table *ngIf="field.options?.length" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let option of field.options">
+        <td>{{option}}</td>
+        <td class="td-icons">
+          <span class="material-symbols-outlined">
+            delete
+          </span>
+          <span (click)="editarOpcao(option)" class="material-symbols-outlined">
+            edit_square
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="field.type === 'file'" class="p-2">
+  <label style="margin-bottom: 7px;">Formato arquivo</label>
+  <div class="form-check">
+    <label for="descricao">Arquivo pdf</label>
+    <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novaTipoArquivo('pdf')" [checked]="possuiExtensao('pdf')">
+  </div>
+  <div class="form-check">
+    <label for="descricao">Imagens</label>
+    <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novaTipoArquivo('imagem')" [checked]="possuiExtensao('imagem')">
+  </div>
+  <div class="form-check">
+    <label for="descricao">Arquivos office</label>
+    <input  type="text" class="form-check-input checkbox" type="checkbox" (click)="novaTipoArquivo('office')" [checked]="possuiExtensao('office')">
+  </div>
+  <div class="form-check">
+    <label for="descricao">Videos</label>
+    <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novaTipoArquivo('video')" [checked]="possuiExtensao('video')">
+  </div>
+</div>
+<div class="p-2">
+  <label for="descricao">Descrição</label>
+  <input [(ngModel)]="field.label" type="text" class="form-control" name="descricao">
+</div>
+<div class="p-2">
+  <div class="form-check">
+    <input [(ngModel)]="field.active" class="form-check-input checkbox" type="checkbox">
+    <label class="form-check-label">Habibitar campo</label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="field.required" class="form-check-input checkbox" type="checkbox">
+    <label class="form-check-label">Tornar obrigatório</label>
+  </div>
+</div>
+<app-salvar-fechar (fecharEmit)="fechar()" (salvarEmit)="adicionar()"></app-salvar-fechar>
+</div>

@@ -1,0 +1,28 @@
+<div class="box-form-regra">
+  <div class="mb-4">
+    <select class="form-select" [(ngModel)]="etapa.tipo_id">
+      <option value="0" disabled>Selecione um tipo</option>
+      <option [disabled]="tipo.id != 4 && etapas.length == 0" *ngFor="let tipo of tipos" id="tipo{{tipo.id}}" [value]="tipo.id">{{tipo.descricao}}</option>
+    </select>
+  </div>
+  <div *ngIf="etapa.tipo_id == 1" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaAssinate($event)" [titulo]="'Assinaturas'"
+      [itens]="assinantes"></app-tabela-etapa>
+      <app-tabela-etapa  *ngIf="etapa.assinantes.length" (itemEmit)="adicionaFormularioAssinante($event)" [titulo]="'Formulários que devem ser assinados'"
+    [itens]="formularios"></app-tabela-etapa>
+  </div>
+  <div *ngIf="etapa.tipo_id == 3" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaConferencia($event)" [titulo]="'Conferência'"
+      [itens]="setores"></app-tabela-etapa>
+  </div>
+  <div *ngIf="etapa.tipo_id == 4" class="mb-4">
+    <app-tabela-etapa  (addEmit)="novoEvento()" (itemEmit)="adicionaFormulario($event)" [titulo]="'Formulários'"
+      [itens]="formularios"></app-tabela-etapa>
+  </div>
+  <div *ngIf="etapa.tipo_id" class="mb-4">
+    <app-tabela-etapa (addEmit)="adicionarEvento()" (editEmit)="editarEvento($event)" (itemEmit)="adicionaFormulario($event)" [titulo]="'Eventos'"
+      [itens]="etapa.eventos" [viewAcoes]="true"></app-tabela-etapa>
+  </div>
+  <app-salvar-fechar [remover]="etapa.id != 0" (fecharEmit)="fecharEvent()"
+    (salvarEmit)="salvarEvent()"></app-salvar-fechar>
+</div>

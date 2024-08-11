@@ -1,0 +1,12 @@
+.box-botoes{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.box-botoes button {
+  margin: 0 2px;
+  padding: 7px 28px;
+  font-size: 15px;
+}
+
+ 

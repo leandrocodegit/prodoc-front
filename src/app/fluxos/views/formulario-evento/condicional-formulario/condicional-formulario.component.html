@@ -1,0 +1,25 @@
+<div *ngIf="evento && evento.condicional">
+  <div *ngIf="evento.condicional.id == 1" class="mb-4">
+    <label>Qual formulário</label>
+    <select class="form-select" [(ngModel)]="evento.condicional.formulario">
+      <option *ngFor="let form of formularios" [value]="form.id">{{form.descricao}}</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label>Campo do formulário</label>
+    <select class="form-select" [(ngModel)]="evento.condicional!.campo">
+      <option *ngFor="let variavel of listaVariaveis()" [value]="variavel.name">{{variavel.label}}</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label>Condição</label>
+    <select class="form-select" [(ngModel)]="evento.condicional.condicao">
+      <option value="igual">Se o valor é igual</option>
+      <option value="contem">Se o valor contém</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label for="descricao">Comparação</label>
+    <input [(ngModel)]="evento.condicional.comparacao" type="text" class="form-control" name="comparacao">
+  </div>
+</div>

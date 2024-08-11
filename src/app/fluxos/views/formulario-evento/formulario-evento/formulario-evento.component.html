@@ -1,0 +1,46 @@
+<div *ngIf="evento" class="box-form-evento">
+  <div class="mb-4">
+    <h1>Evento</h1>
+    <select class="form-select" [(ngModel)]="evento.id">
+      <option value="0" disabled>Selecione um evento</option>
+      <option *ngFor="let event of eventos;" [value]="event.id">{{event.descricao}}</option>
+    </select>
+  </div>
+  <div *ngIf="evento.id == 1" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaTag()" [titulo]="'Tags'"
+      [itens]="tags"></app-tabela-etapa>
+  </div>
+  <div *ngIf="evento.id == 2" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaSetor()" [titulo]="'Setores'"
+      [itens]="setores"></app-tabela-etapa>
+  </div>
+  <div *ngIf="evento.id == 4" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaConferencia()" [titulo]="'Setores'"
+      [itens]="setores"></app-tabela-etapa>
+  </div>
+  <div class="mb-4">
+    <div *ngIf="evento.id" class="mb-4" style="margin-left: 7px;">
+      <div *ngIf="evento.id == 1" class="form-check">
+        <input [(ngModel)]="evento.remover"
+          class="form-check-input checkbox" type="checkbox">
+        <label class="form-check-label">Remover tags atuais</label>
+      </div>
+      <div class="form-check">
+        <input (click)="inicializaCondicional()" [(ngModel)]="evento.ativaCondicional"
+          class="form-check-input checkbox" type="checkbox">
+        <label class="form-check-label">Habibitar condicional</label>
+      </div>
+    </div>
+    <div *ngIf="evento.ativaCondicional">
+      <h1>Ativo</h1>
+      <app-condicional-assinatura [etapa]="etapa" [evento]="evento" [etapas]="etapas" [assinantes]="assinantes" *ngIf="doTipoAssinatura()"></app-condicional-assinatura>
+      <app-condicional-formulario [etapa]="etapa" [evento]="evento" [etapas]="etapas" [formularios]="formularios" *ngIf="doTipoFormulario()"></app-condicional-formulario>
+    </div>
+  </div>
+  <div *ngIf="evento.id == 4" class="mb-4">
+    <app-tabela-etapa (itemEmit)="adicionaFormulario($event)" [titulo]="'Formulários'"
+      [itens]="formularios"></app-tabela-etapa>
+  </div>
+  <app-salvar-fechar [remover]="etapa.id != 0" (fecharEmit)="fecharEvent()"
+    (salvarEmit)="salvarEvent()"></app-salvar-fechar>
+</div>

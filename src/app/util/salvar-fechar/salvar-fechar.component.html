@@ -1,0 +1,11 @@
+<div class="box-botoes">
+    <button (click)="fecharEvent()" type="button" class="btn-icon bt-hover">
+        Fechar
+    </button>
+    <button *ngIf="salvar" [disabled]="bloquear" (click)="salvarEvent()" type="button" class="btn-icon bt-hover">
+        Salvar
+    </button>
+    <button *ngIf="remover" [disabled]="bloquear" (click)="removerEvent()" type="button" class="btn-icon bt-hover">
+      Remover
+  </button>
+</div>

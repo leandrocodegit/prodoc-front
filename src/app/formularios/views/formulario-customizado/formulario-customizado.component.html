@@ -1,0 +1,57 @@
+<div class="box-formulario-customizado">
+  <div class="box-formulario-customizado-item" style="width: 100%;">
+    <div class="head-list">
+      <p>Campos do formulário</p>
+      <span (click)="novoCampo()" class="material-symbols-outlined">
+        add_box
+      </span>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Ativo</th>
+          <th>Tipo</th>
+          <th>Descricao</th>
+          <th>Nome da variavel</th>
+          <th>Obrigatório</th>
+          <th>Lista de opções</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let field of fields">
+          <td style="min-width: 40px;">
+            <input (click)="ativarIten(field)" class="form-check-input checkbox" type="checkbox"
+              [checked]="field.active">
+          </td>
+          <td>{{defineTipo(field)}}</td>
+          <td>{{field.label}}</td>
+          <td>{{field.name}}</td>
+          <td>{{field.required ? 'Sim' : 'Não'}}</td>
+          <td>{{listaOpcoes(field)}}</td>
+          <td class="td-icons">
+            <span (click)="editarIten(field)" class="material-symbols-outlined">
+              edit_square
+            </span>
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-formulario-customizado-item" style="min-width: 420px;">
+    <div class="head-list">
+      <p>Visão do formulário</p>
+      <span (click)="novoCampo()" class="material-symbols-outlined">
+        keyboard
+      </span>
+    </div>
+    <app-ipunt-texto [viewSubmit]="true" [fields]="fields"></app-ipunt-texto>
+    <div *ngIf="reload" class="reload-form">
+      <div class="spinner-border text-info"></div>
+      <p style="color: #bfbfbf;">Carregando...</p>
+    </div>
+  </div>
+</div>

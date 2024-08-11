@@ -1,0 +1,40 @@
+.box-file{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    border-radius: 50px;
+    background: #3fd690;
+    color: white;
+}
+
+img{
+    width: 35px;
+    height: 35px;
+    opacity: 0.6;
+    position: absolute;
+}
+
+.custom-file-input {
+    flex-grow: 1;
+    max-width: 350px;
+  }
+
+.custom-file-input input[type="file"] {
+    display: none;
+    flex-grow: 1;
+  }
+  
+  /* Style the custom button or label */
+  .custom-file-input label {
+    display: inline-block;
+    padding: 5px 15px;   
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* Optional: Hover and active styles for the custom button or label */
+ .box-file:hover {
+    background: black;
+  }
+ 
