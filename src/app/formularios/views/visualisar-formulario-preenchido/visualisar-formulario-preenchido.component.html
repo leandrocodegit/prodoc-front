@@ -2,7 +2,8 @@
   <div *ngFor="let field of fields">
     <div *ngIf="field.type !== 'endereco'">
       <label for="email" class="form-label">{{field.label}}</label>
-      <p>{{field.value}}</p>
+      <p *ngIf="field.type == 'checkbox'">{{field.value ? 'Sim' : 'Não'}}</p>
+      <p *ngIf="field.type != 'check'">{{field.value}}</p>
     </div>
     <div *ngIf="field.type == 'endereco'">
       <label for="email" class="form-label">{{field.label}}</label>

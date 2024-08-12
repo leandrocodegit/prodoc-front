@@ -110,7 +110,7 @@ export class FiedlService {
       type: 'checkbox',
       label: 'Verdadeiro',
       name: 'verdadeiro',
-      value: 'true',
+      value: false,
       pattern: '',
       options: [],
       multiple: false,
