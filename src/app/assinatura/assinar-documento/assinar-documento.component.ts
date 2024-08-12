@@ -149,14 +149,7 @@ onTextSelect(event: any) {
         this.texto = this.normalizeText(text);
 
     })
-
-    setInterval(()=> {
-      this.pdfComponent._pdf.getOutline().then((outline: any[]) => {
-        this.outline = outline;
-      });
-      console.log("Load");
-
-    },5000)
+ 
 
   }
 

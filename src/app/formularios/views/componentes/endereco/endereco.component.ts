@@ -69,6 +69,7 @@ export class EnderecoComponent {
     if (event.target.value && event.target.value.length == 8)
       this.http.get('https://brasilapi.com.br/api/cep/v2/' + event.target.value).subscribe((response: any) => {
         this.form.controls[this.field.name + 'street'].setValue(response.street)
+        this.form.controls[this.field.name + 'street'].valid
         this.form.controls[this.field.name + 'state'].setValue(response.state)
         this.form.controls[this.field.name + 'neighborhood'].setValue(response.neighborhood)
         this.listaCidade(response.state)
@@ -92,9 +93,9 @@ export class EnderecoComponent {
   }
 
    isValid(name:string): boolean {
-    var form = this.form.controls[name];
+    const form = this.form.controls[name];
     if (form)
-      return form.valid && form.touched;
+      return form.valid;
     return false;
   }
 

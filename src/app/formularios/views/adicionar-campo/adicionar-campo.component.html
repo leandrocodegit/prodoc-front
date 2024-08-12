@@ -66,15 +66,9 @@
   <label for="descricao">Descrição</label>
   <input [(ngModel)]="field.label" type="text" class="form-control" name="descricao">
 </div>
-<div class="p-2">
-  <div class="form-check">
-    <input [(ngModel)]="field.active" class="form-check-input checkbox" type="checkbox">
-    <label class="form-check-label">Habibitar campo</label>
-  </div>
-  <div class="form-check">
-    <input [(ngModel)]="field.required" class="form-check-input checkbox" type="checkbox">
-    <label class="form-check-label">Tornar obrigatório</label>
-  </div>
+<div class="p-2" style="display: flex;flex-direction: column;">
+    <mat-slide-toggle [(ngModel)]="field.active" style="margin-bottom: 3px;">Habibitar campo</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="field.required">Tornar obrigatório</mat-slide-toggle>
 </div>
 <app-salvar-fechar (fecharEmit)="fechar()" (salvarEmit)="adicionar()"></app-salvar-fechar>
 </div>

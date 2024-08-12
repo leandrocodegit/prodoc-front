@@ -1,44 +1,40 @@
 <div class="box-formulario-customizado">
   <div class="box-formulario-customizado-item" style="width: 100%;">
-    <app-titulo  (eventEmit)="novoCampo()" [titulo]="'Componentes do formulário'" [icon]="'add_box'"></app-titulo>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Ativo</th>
-          <th>Tipo</th>
-          <th>Descricao</th>
-          <th>Nome da variavel</th>
-          <th>Obrigatório</th>
-          <th>Lista de opções</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let field of fields">
-          <td style="min-width: 40px;">
-            <input (click)="ativarIten(field)" class="form-check-input checkbox" type="checkbox"
-              [checked]="field.active">
-          </td>
-          <td>{{defineTipo(field)}}</td>
-          <td>{{field.label}}</td>
-          <td>{{field.name}}</td>
-          <td>{{field.required ? 'Sim' : 'Não'}}</td>
-          <td>{{listaOpcoes(field)}}</td>
-          <td class="td-icons">
-            <span (click)="editarIten(field)" class="material-symbols-outlined">
-              edit_square
-            </span>
-            <span class="material-symbols-outlined">
-              delete
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <app-titulo (eventEmit)="novoCampo()" [titulo]="'Componentes do formulário'" [icon]="'add_box'"></app-titulo>
+    <div class="box-titulo-campos-formulario">
+      <b style="max-width: 70px;">Ativo</b>
+      <b>Tipo</b>
+      <b>Descricao</b>
+      <b>Nome da variavel</b>
+      <b>Obrigatório</b>
+      <b>Lista de opções</b>
+      <b></b>
+    </div>
+    <div cdkDropList [cdkDropListData]="fields" style="width: 100%;min-width: 500px;"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let field of fields" class="box-titulo-campos-formulario" cdkDrag>
+        <p style="max-width: 70px;">
+          <mat-slide-toggle [(ngModel)]="field.active"></mat-slide-toggle>
+        </p>
+        <p>{{defineTipo(field)}}</p>
+        <p>{{field.label}}</p>
+        <p>{{field.name}}</p>
+        <p>{{field.required ? 'Sim' : 'Não'}}</p>
+        <p>{{listaOpcoes(field)}}</p>
+        <p class="td-icons" style="flex-grow: 1;">
+          <span (click)="editarIten(field)" class="material-symbols-outlined">
+            edit_square
+          </span>
+          <span class="material-symbols-outlined">
+            delete
+          </span>
+        </p>
+      </div>
+    </div>
   </div>
   <div class="box-formulario-customizado-item" style="min-width: 420px;">
-    <app-titulo  (eventEmit)="reloadFormulario()" [titulo]="'Visão do formulário'" [icon]="'refresh'"></app-titulo>
-    <app-ipunt-texto *ngIf="!reload" [viewSubmit]="true" [fields]="fields"></app-ipunt-texto>
+    <app-titulo (eventEmit)="reloadFormulario()" [titulo]="'Visão do formulário'" [icon]="'refresh'"></app-titulo>
+    <app-ipunt-texto *ngIf="!reload" [viewSubmit]="true" [fields]="listFieldsAtivos()"></app-ipunt-texto>
     <div *ngIf="reload" class="reload-form">
       <div class="spinner-border text-info"></div>
       <p style="color: #bfbfbf;">Carregando...</p>

@@ -28,6 +28,7 @@ p {
 
 .box-etapas-item {
   padding: 0 10px;
+  border: solid #ebebeb thin;
 }
 
 .box-etapas-item p {
@@ -44,12 +45,12 @@ p {
 .box-etapas-item-indice {
   display: flex;
   align-items: center;
-  background: #4e808b;
+  background: #72ccd1;
   color: white;
   font-weight: 500;
   padding: 15px;
   font-size: 20px;
-  border-radius: 5px 0px 0 5px;
+  border-radius: 2px 0px 0 2px;
 }
 
 .box-etapas-container:hover .box-etapas-item-indice {
@@ -64,10 +65,8 @@ p {
 }
 
 .box-body-fluxo{
-  box-shadow: 3px 3px 2px #e1e1e152;
   height: 82vh;
   padding-bottom: 30px;
-  padding-right: 20px;
   overflow-y: auto;
 }
 

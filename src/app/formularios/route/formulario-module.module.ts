@@ -23,6 +23,7 @@ import { MapaModule } from '../../mapa/route/mapa.module';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { EnderecoComponent } from '../views/componentes/endereco/endereco.component';
 import { VisualisarFormularioPreenchidoComponent } from '../views/visualisar-formulario-preenchido/visualisar-formulario-preenchido.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { VisualisarFormularioPreenchidoComponent } from '../views/visualisar-for
     UtilModule,
     MapaModule,
     MatBottomSheetModule,
+    MatSlideToggleModule
 
   ],
   exports:[

@@ -113,4 +113,17 @@
   overflow: hidden;
 }
 
+.mdc-switch__track {
+  height: calc(var(--mdc-switch-track-height) - 4px)!important;
+}
+
+.mdc-switch__track::after {
+  background: #72ccd1!important;
+}
+
+.spinner-border{
+  width: 3rem!important;
+  height: 3rem!important; 
+}
+
 

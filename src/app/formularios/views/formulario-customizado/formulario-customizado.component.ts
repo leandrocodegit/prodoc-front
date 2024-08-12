@@ -3,6 +3,7 @@ import { AdicionarCampoComponent } from '../adicionar-campo/adicionar-campo.comp
 import { MatDialog } from '@angular/material/dialog';
 import { FiedlService } from '../../services/fiedl-service.service';
 import { Field } from '../../models/Field.model';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-formulario-customizado',
@@ -86,6 +87,25 @@ export class FormularioCustomizadoComponent implements OnInit {
     if (field.options && field.options.length)
       return field.options.map(item => item).reduce((a, b) => a + ', ' + b);
     return '*'
+  }
+
+  listFieldsAtivos(){
+    return this.fields.filter(field => field.active);
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+          
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+    this.fiedlService.eventoFormulario.emit()
   }
 
 }

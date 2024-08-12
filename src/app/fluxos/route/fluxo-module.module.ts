@@ -15,6 +15,7 @@ import { FormularioNovaEtapaComponent } from '../views/formulario-nova-etapa/nov
 import { FormularioEventoComponent } from '../views/formulario-evento/formulario-evento/formulario-evento.component';
 import { CondicionalFormularioComponent } from '../views/formulario-evento/condicional-formulario/condicional-formulario.component';
 import { CondicionalAssinaturaComponent } from '../views/formulario-evento/condicional-assinatura/condicional-assinatura.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CondicionalAssinaturaComponent } from '../views/formulario-evento/condi
     ReactiveFormsModule,
     DragDropModule,
     MatDialogModule,
-    UtilModule
+    UtilModule,
+    MatSlideToggleModule
   ]
 })
 export class FluxoModule { }

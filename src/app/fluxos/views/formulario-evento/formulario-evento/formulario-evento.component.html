@@ -21,9 +21,7 @@
   <div class="mb-4">
     <div *ngIf="evento.id" class="mb-4" style="margin-left: 7px;">
       <div *ngIf="evento.id == 1" class="form-check">
-        <input [(ngModel)]="evento.remover"
-          class="form-check-input checkbox" type="checkbox">
-        <label class="form-check-label">Remover tags atuais</label>
+        <mat-slide-toggle [(ngModel)]="evento.remover">Remover tags atuais</mat-slide-toggle>
       </div>
       <div class="form-check">
         <input (click)="inicializaCondicional()" [(ngModel)]="evento.ativaCondicional"
