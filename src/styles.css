@@ -106,34 +106,6 @@
   color: rgb(119, 0, 255);
 }
 
-.head-list{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #4e808b;
-  color: white;
-  padding: 3px;
-  border-radius: 5px;
-}
-
-.head-list p{
-  margin: 0 10px!important;
-  font-weight: 200;
-  font-size: 13px!important;
-}
-
-.head-list .material-symbols-outlined{
-  cursor: pointer;
-}
-
-.head-list .material-symbols-outlined:hover{
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24;
-}
-
 .box-mapa-sheet .mat-bottom-sheet-container {
   width: 100vw!important;
   min-width: 100vw!important;

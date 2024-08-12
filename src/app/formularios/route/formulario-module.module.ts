@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AssinaturaComponent } from '../views/assinatura/assinatura.component';
 import { InputFieldComponent } from '../views/componentes/input-field.component';
 import { CheckboxFieldComponent } from '../views/componentes/checkbox-field.component';
 import { FormularioCustomizadoComponent } from '../views/formulario-customizado/formulario-customizado.component';
@@ -23,6 +22,7 @@ import { CordenadasFieldComponent } from '../views/componentes/cordenadas-field.
 import { MapaModule } from '../../mapa/route/mapa.module';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { EnderecoComponent } from '../views/componentes/endereco/endereco.component';
+import { VisualisarFormularioPreenchidoComponent } from '../views/visualisar-formulario-preenchido/visualisar-formulario-preenchido.component';
 
 
 @NgModule({
@@ -37,9 +37,10 @@ import { EnderecoComponent } from '../views/componentes/endereco/endereco.compon
     UploadComponent,
     FileFieldComponent,
     IpuntTextoComponent,
-    AssinaturaComponent,
     CordenadasFieldComponent,
-    EnderecoComponent
+    EnderecoComponent,
+    VisualisarFormularioPreenchidoComponent
+
   ],
   imports: [
     CommonModule,
@@ -53,7 +54,11 @@ import { EnderecoComponent } from '../views/componentes/endereco/endereco.compon
     MatDialogModule,
     UtilModule,
     MapaModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+
+  ],
+  exports:[
+    VisualisarFormularioPreenchidoComponent
   ]
 })
 export class FormularioModule { }

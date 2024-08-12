@@ -27,9 +27,14 @@ export class IpuntTextoComponent implements OnInit {
     this.fields.forEach(field => {
 
       if (field.type === 'cordenadas') {
+        
         this.form.addControl(
           field.name + 'lng',
           this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[0] : '' || '', this.mapValidators(field.required, field.type))
+        );
+        this.form.addControl(
+          field.name,
+          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[1] : '' || '', this.mapValidators(field.required, field.type))
         );
       }
 
@@ -82,7 +87,7 @@ export class IpuntTextoComponent implements OnInit {
 
         this.form.addControl(
           field.name,
-          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[1] : '' || '', this.mapValidators(field.required, field.type))
+          this.fb.control(field.value || '', this.mapValidators(field.required, field.type))
         );
       }
     });

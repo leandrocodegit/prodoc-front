@@ -9,7 +9,6 @@
 .box-fluxo-item {
   width: 50%;
   flex-grow: 1;
-  overflow-y: auto;
   max-height: 90vh;
 }
 
@@ -23,7 +22,7 @@ p {
 
 .box-etapas-container {
   display: flex;
-  margin: 5px;
+  margin: 5px 0;
   cursor: pointer;
 }
 
@@ -62,7 +61,14 @@ p {
 .box-fluxo-item {
   margin: 10px;
   padding: 10px;
+}
+
+.box-body-fluxo{
   box-shadow: 3px 3px 2px #e1e1e152;
+  height: 82vh;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  overflow-y: auto;
 }
 
 .box-fluxo-item label {

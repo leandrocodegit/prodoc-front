@@ -70,9 +70,9 @@ export class EnderecoComponent {
       this.http.get('https://brasilapi.com.br/api/cep/v2/' + event.target.value).subscribe((response: any) => {
         this.form.controls[this.field.name + 'street'].setValue(response.street)
         this.form.controls[this.field.name + 'state'].setValue(response.state)
-        this.form.controls[this.field.name + 'city'].setValue(response.city.toUpperCase())
         this.form.controls[this.field.name + 'neighborhood'].setValue(response.neighborhood)
         this.listaCidade(response.state)
+        this.form.controls[this.field.name + 'city'].setValue(this.normalizeText(response.city))
       })
 
   }
@@ -98,5 +98,8 @@ export class EnderecoComponent {
     return false;
   }
 
+  normalizeText(text: string): string {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replaceAll('\n',' ').replaceAll(/\s+/g, ' ');;
+  }
 
 }

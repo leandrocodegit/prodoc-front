@@ -1,0 +1,13 @@
+<div class="box-view-formulario">
+  <div *ngFor="let field of fields">
+    <div *ngIf="field.type !== 'endereco'">
+      <label for="email" class="form-label">{{field.label}}</label>
+      <p>{{field.value}}</p>
+    </div>
+    <div *ngIf="field.type == 'endereco'">
+      <label for="email" class="form-label">{{field.label}}</label>
+      <p>{{field.value.street}} {{field.value.numero}}, {{field.value.cep}}, {{field.value.neighborhood}}, {{field.value.city}} - {{field.value.state}}</p>
+    </div>
+  </div>
+</div>
+

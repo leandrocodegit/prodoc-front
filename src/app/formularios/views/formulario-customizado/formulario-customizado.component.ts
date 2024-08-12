@@ -67,13 +67,14 @@ export class FormularioCustomizadoComponent implements OnInit {
       case 'password': return 'Senha';
       case 'email': return 'Email';
       case 'file': return 'Arquivo';
+      case 'endereco': return 'Endereço';
 
 
     }
     return '';
   }
 
-  private reloadFormulario(){
+  protected reloadFormulario(){
     this.reload = true;
     var intevalo = setInterval(() => {
       this.reload = false;

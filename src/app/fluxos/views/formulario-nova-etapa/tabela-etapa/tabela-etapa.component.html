@@ -1,10 +1,4 @@
-<div class="head-list">
-  <p>
-    {{titulo}}</p>
-  <span (click)="adicionar()" class="material-symbols-outlined">
-    add_box
-  </span>
-</div>
+<app-titulo (eventEmit)="adicionar()" [titulo]="titulo" [icon]="'add_box'"></app-titulo>
 <table class="table">
   <thead>
     <tr>

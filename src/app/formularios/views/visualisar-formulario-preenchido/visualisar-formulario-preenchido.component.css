@@ -1,0 +1,17 @@
+.box-view-formulario {
+  padding: 15px;
+}
+
+label {
+  margin: 3px 0;
+  color: #82743e;
+}
+
+p {
+  font-weight: 500;
+  background: #f4f4f4;
+  padding: 17px 10px;
+  border-radius: 5px;
+  border: solid #e0e0e0 thin;
+  max-width: 450px;
+}

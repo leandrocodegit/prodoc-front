@@ -1,42 +1,32 @@
 <button (click)="novaEtapa()">Nova etapa</button>
 <div class="box-fluxo-container">
   <div class="box-fluxo-item">
-    <div class="box-titulo">
-      <span class="material-symbols-outlined">
-        account_tree
-      </span>
-      <label>Fluxo</label>
+    <app-titulo [titulo]="'Fluxo'"></app-titulo>
+    <div class="box-body-fluxo">
+      <app-descricao-fluxo-etapas [etapas]="etapas"></app-descricao-fluxo-etapas>
     </div>
-    <app-descricao-fluxo-etapas [etapas]="etapas"></app-descricao-fluxo-etapas>
   </div>
   <div class="box-fluxo-item" cdkDropListGroup>
-    <div class="box-titulo">
-      <span class="material-symbols-outlined">
-        list
-      </span>
-      <label>Tarefas</label>
-    </div>
-    <div cdkDropList [cdkDropListData]="etapas" style="width: 100%;min-width: 500px;"
-      (cdkDropListDropped)="drop($event)">
-      <div (click)="selecionarEtapa(etapa)" class="box-etapas-container" *ngFor="let etapa of etapas;" cdkDrag
-        [cdkDragData]="etapa">
-        <div class="box-etapas-item-indice">
-          <p>{{etapa.posicao}}</p>
-        </div>
-        <div class="box-etapas-item" style="width: 100%;">
-          <p>{{etapa.tipo.descricao}}</p>
-          <span>{{listaDetalhes(etapa)}}</span>
+    <app-titulo [titulo]="'Tarefas'"></app-titulo>
+    <div class="box-body-fluxo">
+      <div cdkDropList [cdkDropListData]="etapas" style="width: 100%;min-width: 500px;"
+        (cdkDropListDropped)="drop($event)">
+        <div (click)="selecionarEtapa(etapa)" class="box-etapas-container" *ngFor="let etapa of etapas;" cdkDrag
+          [cdkDragData]="etapa">
+          <div class="box-etapas-item-indice">
+            <p>{{etapa.posicao}}</p>
+          </div>
+          <div class="box-etapas-item" style="width: 100%;">
+            <p>{{etapa.tipo.descricao}}</p>
+            <span>{{listaDetalhes(etapa)}}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="box-fluxo-item">
-    <div class="box-titulo">
-      <span class="material-symbols-outlined">
-        integration_instructions
-      </span>
-      <label>Formulário</label>
-    </div>
-    <app-formulario-nova-etapa [etapa]="etapaSelect" [etapas]="etapas"></app-formulario-nova-etapa>
+      <app-titulo [titulo]="'Formulário'"></app-titulo>
+      <div class="box-body-fluxo">
+        <app-formulario-nova-etapa [etapa]="etapaSelect" [etapas]="etapas"></app-formulario-nova-etapa>
+      </div>
   </div>
-</div>

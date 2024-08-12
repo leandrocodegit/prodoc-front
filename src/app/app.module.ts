@@ -15,12 +15,11 @@ import { UtilModule } from './util/route/util-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FluxoModule } from './fluxos/route/fluxo-module.module';
 import { AssinaturaModule } from './assinatura/route/assinatura-module.module';
-import { DataMapaComponent } from './mapa/views/data-mapa/data-mapa.component';
-import { EnderecoComponent } from './formularios/views/componentes/endereco/endereco.component';
 
 @NgModule({
   declarations: [
     AppComponent
+
   ],
   imports: [
     BrowserModule,

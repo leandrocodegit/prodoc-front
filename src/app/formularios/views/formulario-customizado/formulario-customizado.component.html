@@ -1,11 +1,6 @@
 <div class="box-formulario-customizado">
   <div class="box-formulario-customizado-item" style="width: 100%;">
-    <div class="head-list">
-      <p>Campos do formulário</p>
-      <span (click)="novoCampo()" class="material-symbols-outlined">
-        add_box
-      </span>
-    </div>
+    <app-titulo  (eventEmit)="novoCampo()" [titulo]="'Componentes do formulário'" [icon]="'add_box'"></app-titulo>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -42,13 +37,8 @@
     </table>
   </div>
   <div class="box-formulario-customizado-item" style="min-width: 420px;">
-    <div class="head-list">
-      <p>Visão do formulário</p>
-      <span (click)="novoCampo()" class="material-symbols-outlined">
-        keyboard
-      </span>
-    </div>
-    <app-ipunt-texto [viewSubmit]="true" [fields]="fields"></app-ipunt-texto>
+    <app-titulo  (eventEmit)="reloadFormulario()" [titulo]="'Visão do formulário'" [icon]="'refresh'"></app-titulo>
+    <app-ipunt-texto *ngIf="!reload" [viewSubmit]="true" [fields]="fields"></app-ipunt-texto>
     <div *ngIf="reload" class="reload-form">
       <div class="spinner-border text-info"></div>
       <p style="color: #bfbfbf;">Carregando...</p>
