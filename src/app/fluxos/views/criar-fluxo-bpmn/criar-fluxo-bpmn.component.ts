@@ -1,6 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Modeler from 'bpmn-js/lib/Modeler';
 import BpmnJS from 'bpmn-js/lib/Modeler';
+import { CustomTranslateServiceService } from '../../services/custom-translate-service.service';
+import { Etapa } from '../../models/Etapa.model';
+import { ETAPAS } from '../../models/Etapas';
+import { Shape } from 'bpmn-js/lib/model/Types';
 
 @Component({
   selector: 'app-criar-fluxo-bpmn',
@@ -10,29 +14,16 @@ import BpmnJS from 'bpmn-js/lib/Modeler';
 export class CriarFluxoBpmnComponent implements OnInit {
 
   private bpmnJS!: BpmnJS
-  public modeler :any =  new Modeler({});
+  protected element!: Shape
+  protected etapas: Etapa[] = ETAPAS;
+  public modeler :Modeler =  new Modeler({});
 
   @ViewChild('canvas', { static: true }) private canvas!: ElementRef;
 
-  constructor() {
-
-
-
-
-
-
-
-    var intervalo = setInterval(() => {
-
-
-
-   // this.bpmnJS.importXML(diagram);
-      clearInterval(intervalo)
-
-    },100)
-
+  constructor(
+    private customTranslateService: CustomTranslateServiceService
+  ) {
   }
-
   ngOnInit(): void {
    // this.modeler.attachTo(this.canvas.nativeElement);
    this.modeler = new Modeler({
@@ -42,15 +33,18 @@ export class CriarFluxoBpmnComponent implements OnInit {
     keyboard: {
       bindTo: window
     },
-    additionalModules: [
-      require('bpmn-js/lib/features/palette'),
-      require('diagram-js-minimap'),
+    additionalModules:[
+      {
+        translate: ['value', this.customTranslateService.translate.bind(this.customTranslateService)]
+      }
     ],
     palette: {
       open: true,
 
     }
   });
+
+  this.modeler.on('element.click', (event:any) => this.onElementClick(event));
 
     const diagram = `<?xml version="1.0" encoding="UTF-8"?>
       <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -74,6 +68,52 @@ export class CriarFluxoBpmnComponent implements OnInit {
 
       this.modeler.importXML(diagram)
 
+  }
+  private onElementClick(event: any): void {
+    this.element = event.element;
+
+    if (this.element.type === 'bpmn:Task') {
+    const modeling:any = this.modeler.get('modeling');
+    const moddle:any = this.modeler.get('moddle');
+    
+    const extensionElements = moddle.create('bpmn:ExtensionElements');
+    const jsonProperty = moddle.create('bpmn:Property', {
+      name: 'customData',
+      value: JSON.stringify({ key1: this.etapas[0] })
+    });
+    
+    extensionElements.get('values').push(jsonProperty);
+    modeling.updateProperties(this.element, {
+      extensionElements: extensionElements
+    });
+    console.log('Custom Data:', this.element);
+
+    this.getData(this.element)
+
+  }
+  }
+
+  private getData(element:any): void {  
+      console.log('Clicked element:', element);
+
+      // Verifique o tipo do elemento e extraia o JSON ou outras informações
+      if (element.type === 'bpmn:Task') {
+        const businessObject = element.businessObject;
+        const customData = businessObject.extensionElements
+          ? businessObject.extensionElements.values.find((ext: any) => ext.name === 'customData')
+          : null;
+
+        if (customData) {
+          console.log('Custom Data:', customData.$attrs.value
+          );
+        }
+      }
+  }
+
+  public exportDiagram(): void {
+   this.modeler.saveXML({ format: true }).then(result =>{
+      console.log(result.xml);    
+   })
   }
 
 }
