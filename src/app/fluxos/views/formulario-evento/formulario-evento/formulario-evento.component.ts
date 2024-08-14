@@ -45,11 +45,11 @@ export class FormularioEventoComponent implements OnInit {
 
   constructor(
     private fieldService: FiedlService,
-    public dialogRef: MatDialogRef<FormularioEventoComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any
+    //public dialogRef: MatDialogRef<FormularioEventoComponent>,
+    //@Inject(MAT_DIALOG_DATA) private data: any
   ) {
-    this.etapa = data.etapa;
-    this.evento = data.evento;
+    //this.etapa = data.etapa;
+    //this.evento = data.evento;
 
     if(this.evento){
       this.tipoEvento = this.evento.id
@@ -151,7 +151,7 @@ export class FormularioEventoComponent implements OnInit {
   }
 
   fecharEvent() {
-    this.dialogRef.close()
+    //this.dialogRef.close()
   }
 
   salvarEvent() {
@@ -173,7 +173,7 @@ export class FormularioEventoComponent implements OnInit {
 
 
       this.salvarEmit.emit(this.evento)
-      this.dialogRef.close()
+     // this.dialogRef.close()
       this.fieldService.eventoFormulario.emit()
     }
   }

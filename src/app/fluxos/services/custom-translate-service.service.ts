@@ -11,12 +11,17 @@ export class CustomTranslateServiceService {
     const customTranslations:any = {
       'Change element': 'Alterar elemento',
       'End Event': 'Fim do evento',
-      'Star Event': 'Inicio',
+      'Start Event': 'Inicio do evento',
       'Parallel Gateway': 'Paralelo',
       'Complex Gateway': 'Complexo',
       'Inclusive Gateway': 'Inclusive',
       'Event based Gateway': 'Evento',
-
+      'Intermediate Throw Event': 'Evento intermediário',
+      'Message Start Event': 'Message Start Event',
+      'Timer Start Event': 'Evento de início do temporizador',
+      'Conditional Start Event': 'Evento de Início Condicional',
+      'Signal Start Event': 'Evento de início de sinal'
+ 
 
 
       // Add more translations as needed

@@ -18,6 +18,34 @@ export class CriarFluxoBpmnComponent implements OnInit {
   protected etapas: Etapa[] = ETAPAS;
   public modeler :Modeler =  new Modeler({});
 
+  protected tipos = [
+    { id: 1, descricao: 'Assinatura' },
+    { id: 2, descricao: 'Evento' },
+    { id: 3, descricao: 'Enviar para conferência' },
+    { id: 4, descricao: 'Preencher forumlário' },
+
+  ]
+  protected assinantes = [
+    { id: 1, descricao: 'Diretoria', ativo: false },
+    { id: 2, descricao: 'Requerente', ativo: false },
+    { id: 3, descricao: 'Setor', ativo: false },
+  ]
+
+  protected setores = [
+    { id: 1, descricao: 'Setor 1', ativo: false },
+    { id: 2, descricao: 'Setor 2', ativo: false },
+  ]
+
+  protected formularios = [
+    { id: 1, descricao: 'Licença ambiental', ativo: false, template: {}, assinantes: {} },
+    { id: 2, descricao: 'Pedido de construção', ativo: false, template: {}, assinantes: {} }
+  ]
+
+  protected tags = [
+    { id: 1, descricao: 'Aguardando assinatura', ativo: false, template: {}, assinantes: {} },
+    { id: 2, descricao: 'Pendencia de contrado', ativo: false, template: {}, assinantes: {} }
+  ]
+
   @ViewChild('canvas', { static: true }) private canvas!: ElementRef;
 
   constructor(
