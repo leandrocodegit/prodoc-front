@@ -83,25 +83,33 @@ export class PainelPropriedadesComponent implements OnInit {
       modeling.updateProperties(this.element, {
         name: this.dados.name,
         id: this.dados.id,
-        documentation: [
-          {
-            text: this.dados.documentation
-          }
-        ],
-        historyTimeToLive: 10,
-        isExecutable: this.dados.isExecutable,
-        jobPriority: "10"
+         isExecutable: this.dados.isExecutable,
+        jobPriority: this.dados.jobPriority,
       });
+
     } else {
       modeling.updateProperties(this.element, {
         name: this.dados.name,
         id: this.dados.id,
-        documentation: [
-          {
-            text: this.dados.documentation
-          }
-        ]
       });
+    }
+    if(this.dados.documentation != ''){
+
+      var documentation = moddle.create('bpmn:Documentation', {
+        text: this.dados.documentation
+      });
+      var existingDocumentation:any[] = this.element.businessObject.get('documentation') || [];
+
+      if (existingDocumentation) {
+        if(existingDocumentation.length){
+          existingDocumentation= []
+        }
+        existingDocumentation.push(documentation);
+        modeling.updateProperties(this.element, {
+          documentation: existingDocumentation
+        });
+
+      }
     }
 
   }
