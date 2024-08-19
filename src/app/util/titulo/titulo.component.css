@@ -4,10 +4,15 @@
   justify-content: space-between;
   background: #f7f7f7;
   color: #616161;
-  padding: 10px 5px;
+  padding: 5px 5px;
   border-radius: 5px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   border: solid #e7e7e7 thin;
+}
+
+.destaque{
+  background: #49938d!important;
+  color: white;
 }
 
 .head-list p{

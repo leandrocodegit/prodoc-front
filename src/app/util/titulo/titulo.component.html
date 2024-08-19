@@ -1,6 +1,6 @@
-<div class="head-list">
+<div class="head-list" [class.destaque]="destacar">
   <p>{{titulo}}</p>
-  <span (click)="novoCampo()" class="material-symbols-outlined">
+  <span *ngIf="icon" (click)="novoCampo()" class="material-symbols-outlined">
     {{icon}}
   </span>
 </div>

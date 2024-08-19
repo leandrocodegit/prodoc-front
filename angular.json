@@ -23,6 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "allowedCommonJsDependencies": [
+              "bpmn-js-properties-panel"
+            ],
             "outputPath": "dist/prodoc-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -32,7 +35,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
+              "src/assets/**",
               "src/index.php",
               "src/.htaccess",
               {
@@ -44,6 +47,11 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/assets/pdfs/*"
               }
             ],
             "styles": [
@@ -56,10 +64,11 @@
               "node_modules/leaflet/dist/leaflet.css",
               "node_modules/bpmn-js/dist/assets/diagram-js.css",
               "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn.css",
+               "node_modules/@bpmn-io/form-js/dist/assets/form-js.css",
+               "node_modules/@bpmn-io/form-js/dist/assets/form-js-editor.css",
+               "node_modules/@bpmn-io/form-js/dist/assets/dragula.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -114,7 +123,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/assets/"
               }
             ],
             "styles": [

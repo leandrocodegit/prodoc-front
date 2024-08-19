@@ -2,86 +2,86 @@
 @import "primeng/resources/primeng.css";
 
 
- html,
- body {
-   font-family: "Roboto Mono", monospace;
-   font-optical-sizing: auto;
-   font-style: normal;
-   height: 100%;
- }
+html,
+body {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  height: 100%;
+}
 
- .material-symbols-outlined {
-   font-variation-settings:
-     'FILL' 0,
-     'wght' 100,
-     'GRAD' 0,
-     'opsz' 24
- }
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 100,
+    'GRAD' 0,
+    'opsz' 24
+}
 
- button {
-   background: #292727;
-   outline: none;
-   border: none;
-   color: white;
-   border-radius: 5px !important;
- }
+button {
+  background: #292727;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 5px !important;
+}
 
- .bt-hover:hover {
-   background: salmon !important;
- }
+.bt-hover:hover {
+  background: salmon !important;
+}
 
- .btn-icon span {
-   float: left;
- }
-
-
- .mat-form-field {
-   width: 100%;
- }
-
- .input-cusomizado {
-   width: 300px;
- }
-
- .componente-customizado {
-   padding: 10px;
- }
-
- .componente-customizado .error-message {
-   margin-top: 5px;
- }
-
- .checkbox {
-   width: 20px!important;
-   height: 17px!important;
-   margin-right: 5px!important;
-   cursor: pointer;
- }
+.btn-icon span {
+  float: left;
+}
 
 
- .componente-customizado {
-   max-width: 420px;
- }
+.mat-form-field {
+  width: 100%;
+}
 
- .componente-customizado-icon {
-   display: flex;
-   flex-wrap: nowrap;
-   align-items: center;
- }
+.input-cusomizado {
+  width: 300px;
+}
 
- .componente-customizado-icon .material-symbols-outlined {
-   font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
-   color: #2edda9;
-   font-size: 25px;
-   margin-left: 15px;
- }
+.componente-customizado {
+  padding: 10px;
+}
 
- .componente-cordenadas{
-    display: flex;
-    flex-wrap: nowrap;
- }
+.componente-customizado .error-message {
+  margin-top: 5px;
+}
 
- .componente-cordenadas .material-symbols-outlined {
+.checkbox {
+  width: 20px !important;
+  height: 17px !important;
+  margin-right: 5px !important;
+  cursor: pointer;
+}
+
+
+.componente-customizado {
+  max-width: 420px;
+}
+
+.componente-customizado-icon {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.componente-customizado-icon .material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
+  color: #2edda9;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+.componente-cordenadas {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.componente-cordenadas .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
   color: white;
   font-size: 25px;
@@ -92,38 +92,77 @@
   cursor: pointer;
 }
 
- .td-icons{
+.td-icons {
   cursor: pointer;
 
 }
 
-.td-icons span{
+.td-icons span {
   margin-right: 5px;
   float: right;
 }
 
-.td-icons span:hover{
+.td-icons span:hover {
   color: rgb(119, 0, 255);
 }
 
 .box-mapa-sheet .mat-bottom-sheet-container {
-  width: 100vw!important;
-  min-width: 100vw!important;
-  max-width: 100vw!important;
+  width: 100vw !important;
+  min-width: 100vw !important;
+  max-width: 100vw !important;
   overflow: hidden;
 }
 
 .mdc-switch__track {
-  height: calc(var(--mdc-switch-track-height) - 4px)!important;
+  height: calc(var(--mdc-switch-track-height) - 4px) !important;
 }
 
 .mdc-switch__track::after {
-  background: #72ccd1!important;
+  background: #72ccd1 !important;
 }
 
-.spinner-border{
-  width: 3rem!important;
-  height: 3rem!important; 
+.box-painel-propriedades-titulo .mdc-switch__track::after {
+  background: #765cb4 !important
 }
 
+.spinner-border {
+  width: 3rem !important;
+  height: 3rem !important;
+}
 
+.table {
+  vertical-align: middle !important;
+}
+
+.table td {
+  vertical-align: middle !important;
+  padding: 0 !important;
+  ;
+}
+
+.custom-color-picker-icon {
+  fill: red;
+}
+
+.custom-color-picker-icon::before {
+  content: url('assets/icons/palette.svg');
+  fill: red;
+}
+
+.djs-context-pad .entry:hover{
+  color: rgb(35, 155, 253);
+  background-color: transparent;
+}
+
+.djs-context-pad .entry:hover{
+  background: red;
+}
+
+.djs-popup.color-picker .entry {
+  margin: 0;
+}
+
+.djs-popup.color-picker .djs-popup-group {
+display: grid;
+grid: auto-flow / 1fr 1fr 1fr;
+}

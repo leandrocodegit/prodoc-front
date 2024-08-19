@@ -17,10 +17,10 @@ import { FluxoModule } from './fluxos/route/fluxo-module.module';
 import { AssinaturaModule } from './assinatura/route/assinatura-module.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
+
 @NgModule({
   declarations: [
-    AppComponent,
-
+    AppComponent
 
   ],
   imports: [

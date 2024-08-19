@@ -149,12 +149,12 @@ onTextSelect(event: any) {
         this.texto = this.normalizeText(text);
 
     })
- 
+
 
   }
 
   normalizeText(text: string): string {
-    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replaceAll('\n',' ').replaceAll(/\s+/g, ' ');;
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace('\n',' ').replace(/\s+/g, ' ');;
   }
 
   assinar() {

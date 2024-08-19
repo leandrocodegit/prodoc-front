@@ -100,7 +100,7 @@ export class EnderecoComponent {
   }
 
   normalizeText(text: string): string {
-    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replaceAll('\n',' ').replaceAll(/\s+/g, ' ');;
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace('\n',' ').replace(/\s+/g, ' ');;
   }
 
 }

@@ -1,0 +1,56 @@
+<div *ngIf="element" class="box-painel-propriedades-titulo">
+  <span class="custom-color-picker-icon"></span>
+  <span [class]=getIcon().icon></span>
+  <p>{{getIcon().name}}</p>
+  <mat-slide-toggle [disabled]="dados.type != 'bpmn:Process'" (change)="alterarDetalhes()" [(ngModel)]="dados.isExecutable"></mat-slide-toggle>
+</div>
+<div *ngIf="element" class="box-painel-propriedades">
+    <div class="box-painel-propriedades-item">
+      <label class="form-label">Nome</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="dados.name" type="text" class="form-control" id="nomeProcesso" name="nomeProcesso">
+    </div>
+    <div class="box-painel-propriedades-item">
+      <label class="form-label">Id</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="dados.id" type="text" class="form-control" id="id" name="id">
+    </div>
+    <div *ngIf="element.businessObject" class="box-painel-propriedades-item">
+      <label class="form-label">Descrição</label>
+      <textarea (input)="alterarDetalhes()" [(ngModel)]="dados.documentation" type="text" class="form-control" id="descricao" name="descricao"></textarea>
+    </div>
+    <div *ngIf="dados.type == 'bpmn:Process'" class="box-painel-propriedades-item">
+      <label class="form-label">Prazo de execução(dias)</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="dados.historyTimeToLive" type="number" class="form-control" id="prazo" name="prazo">
+    </div>
+    <div *ngIf="dados.type == 'bpmn:Process'" class="box-painel-propriedades-item">
+      <label class="form-label">Prioridade</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="dados.jobPriority" type="number" class="form-control" id="prazo" name="prazo">
+    </div>
+  <div *ngIf="viewFormulario()" class="box-painel-propriedades-item">
+    <label class="form-label">Formulário</label>
+    <select class="form-select">
+      <option value="0" disabled>Selecione um evento</option>
+      <option value="0">Licenciamento</option>
+    </select>
+  </div>
+  <div *ngIf="element?.type == 'bpmn:ServiceTask'" class="box-painel-propriedades-item">
+    <app-tabela-etapa [destacarTitulo]="true" [viewAdd]="false" [viewHead]="false" [itens]="ouvintes" [titulo]="'Serviços'"></app-tabela-etapa>
+  </div>
+  <div *ngIf="element?.type == 'bpmn:UserTask'" class="box-painel-propriedades-item">
+    <div class="box-painel-propriedades-item">
+      <label class="form-label">Atribuir usuário</label>
+      <div class="pesquisa form-control" style="width: 300px;margin: auto;display: flex;justify-content: space-between;margin-bottom: 10px;">
+        <input style="border: none;outline: none;" placeholder="Pesquisar usuário"
+          type="text">
+        <span class="material-symbols-outlined">
+          search
+        </span>
+      </div>
+      <app-tabela-etapa [destacarTitulo]="true" [viewTitulo]="false" [viewHead]="false" [itens]="ouvintes.slice(1)" [titulo]="'Atribuir usuários'"></app-tabela-etapa>
+    </div>
+    <app-tabela-etapa [destacarTitulo]="true" [viewHead]="false" [itens]="ouvintes" [titulo]="'Atribuir usuários'"></app-tabela-etapa>
+    <app-tabela-etapa [destacarTitulo]="true" [viewHead]="false" [itens]="ouvintes" [titulo]="'Atribuir grupos'"></app-tabela-etapa>
+  </div>
+  <div class="box-painel-propriedades-item">
+    <app-tabela-etapa [destacarTitulo]="true" [viewAdd]="false" [viewHead]="false" [itens]="ouvintes" [titulo]="'Lançamento de evento'"></app-tabela-etapa>
+  </div>
+</div>

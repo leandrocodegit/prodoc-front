@@ -10,6 +10,10 @@ export class TabelaEtapaComponent implements OnInit {
   @Input() titulo = '';
   @Input() itens: any[] = [];
   @Input() viewAcoes = false;
+  @Input() viewHead = true;
+  @Input() viewTitulo = true;
+  @Input() viewAdd = true;
+  @Input() destacarTitulo = false
   @Output() itemEmit = new EventEmitter();
   @Output() addEmit = new EventEmitter();
   @Output() editEmit = new EventEmitter();

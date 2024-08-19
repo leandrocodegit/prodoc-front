@@ -1,13 +1,12 @@
-<div class="box-cria-bpmn">
-    <div #canvas style="width: 70%; height: 600px; border: 1px solid #ccc;"></div>
-    <div style="width: 30%; height: 600px; border: 1px solid #ccc;background: rgb(240, 240, 240);">
-        <label>{{element && element.type ? element.type : ''}} {{element && element.type ? element.type.includes('Event') : ''}}</label>
-        <div *ngIf="element && element.type === 'bpmn:Task'" class="mb-4">
-            <app-tabela-etapa [titulo]="'Formulários'" [itens]="formularios"></app-tabela-etapa>
-        </div>
-        <div *ngIf="element && element.type.includes('Event')" class="mb-4">
-            <app-formulario-evento></app-formulario-evento>
-        </div>
+
+<div class="box-cria-bpmn" style=" height: 100vh;">
+    <div #canvas style="width: 70%; height: 100%; border: 1px solid #ccc;"></div>
+      <div  style="width: 30%; height: 100%; border: 1px solid #ccc;">
+        <app-painel-propriedades [dados]="dados" [modeler]="modeler" [element]="element"></app-painel-propriedades>
     </div>
+    <button (click)="exportDiagram()">Export Diagram</button>
+    <div #properties style="width: 30%; height: 100%; border: 1px solid #ccc;background: rgb(240, 240, 240);display: block;">
+
 </div>
-<button (click)="exportDiagram()">Export Diagram</button>
+
+

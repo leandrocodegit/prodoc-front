@@ -17,6 +17,8 @@ import { CondicionalFormularioComponent } from '../views/formulario-evento/condi
 import { CondicionalAssinaturaComponent } from '../views/formulario-evento/condicional-assinatura/condicional-assinatura.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CriarFluxoBpmnComponent } from '../views/criar-fluxo-bpmn/criar-fluxo-bpmn.component';
+import { PainelPropriedadesComponent } from '../views/criar-fluxo-bpmn/painel-propriedades/painel-propriedades.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { CriarFluxoBpmnComponent } from '../views/criar-fluxo-bpmn/criar-fluxo-b
     CondicionalAssinaturaComponent,
     DescricaoFluxoEtapasComponent,
     FormularioNovaEtapaComponent,
-    CriarFluxoBpmnComponent
+    CriarFluxoBpmnComponent,
+    PainelPropriedadesComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { CriarFluxoBpmnComponent } from '../views/criar-fluxo-bpmn/criar-fluxo-b
     MatDialogModule,
     UtilModule,
     MatSlideToggleModule,
+    MatCheckboxModule
   ]
 })
 export class FluxoModule { }

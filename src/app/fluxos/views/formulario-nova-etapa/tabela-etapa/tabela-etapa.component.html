@@ -1,16 +1,16 @@
-<app-titulo (eventEmit)="adicionar()" [titulo]="titulo" [icon]="'add_box'"></app-titulo>
+<app-titulo *ngIf="viewTitulo" (eventEmit)="adicionar()" [destacar]="destacarTitulo" [titulo]="titulo" [icon]="viewAdd ? 'add_box' : undefined"></app-titulo>
 <table class="table">
-  <thead>
+  <thead *ngIf="viewHead">
     <tr>
-      <th style="width: 70px;">Ativo</th>
+      <th style="width: 30px;">Ativo</th>
       <th>Descrição</th>
       <th *ngIf="viewAcoes"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of itens">
-      <td style="min-width: 20px;">
-        <mat-slide-toggle (click)="removeIten(item)" [(ngModel)]="item.ativo"></mat-slide-toggle>
+      <td style="width: 30px;">
+        <mat-checkbox [color]="'primary'" (click)="removeIten(item)" [(ngModel)]="item.ativo"></mat-checkbox>
       </td>
       <td>{{item.descricao}}</td>
       <td *ngIf="viewAcoes" class="td-icons">

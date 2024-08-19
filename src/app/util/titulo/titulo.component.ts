@@ -8,7 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class TituloComponent {
 
   @Input() titulo = ''
-  @Input() icon = ''
+  @Input() destacar = false
+  @Input() icon?: any
   @Output() eventEmit = new EventEmitter();
 
   novoCampo(){
