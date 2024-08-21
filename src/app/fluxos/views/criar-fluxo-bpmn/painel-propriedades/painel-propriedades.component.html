@@ -32,10 +32,13 @@
       <option value="0">Licenciamento</option>
     </select>
   </div>
-  <div *ngIf="element?.type == 'bpmn:ServiceTask'" class="box-painel-propriedades-item">
+  <div *ngIf="listaServicos().length" class="box-painel-propriedades-item">
+    <app-tabela-etapa [destacarTitulo]="true" [viewAdd]="false" [viewHead]="false" [itens]="listaServicos()" [titulo]="'Serviços'"></app-tabela-etapa>
+  </div>
+  <div *ngIf="element?.type == 'bpmn:ServiceTasks'" class="box-painel-propriedades-item">
     <app-tabela-etapa [destacarTitulo]="true" [viewAdd]="false" [viewHead]="false" [itens]="ouvintes" [titulo]="'Serviços'"></app-tabela-etapa>
   </div>
-  <div *ngIf="element?.type == 'bpmn:UserTask'" class="box-painel-propriedades-item">
+  <div *ngIf="element?.type == 'bpmn:UserTasks'" class="box-painel-propriedades-item">
     <div class="box-painel-propriedades-item">
       <label class="form-label">Atribuir usuário</label>
       <div class="pesquisa form-control" style="width: 300px;margin: auto;display: flex;justify-content: space-between;margin-bottom: 10px;">
@@ -51,6 +54,6 @@
     <app-tabela-etapa [destacarTitulo]="true" [viewHead]="false" [itens]="ouvintes" [titulo]="'Atribuir grupos'"></app-tabela-etapa>
   </div>
   <div class="box-painel-propriedades-item">
-    <app-tabela-etapa [destacarTitulo]="true" [viewAdd]="false" [viewHead]="false" [itens]="ouvintes" [titulo]="'Lançamento de evento'"></app-tabela-etapa>
+    <app-tabela-etapa [destacarTitulo]="false" [viewAdd]="false" [viewHead]="false" [itens]="ouvintes" [titulo]="'Lançamento de evento'"></app-tabela-etapa>
   </div>
 </div>

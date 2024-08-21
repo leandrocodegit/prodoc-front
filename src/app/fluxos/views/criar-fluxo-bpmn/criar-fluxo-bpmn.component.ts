@@ -64,6 +64,8 @@ export class CriarFluxoBpmnComponent implements OnInit {
     { id: 2, descricao: 'Pendencia de contrado', ativo: false, template: {}, assinantes: {} }
   ]
 
+
+
   @ViewChild('canvas', { static: true }) private canvas!: ElementRef;
   @ViewChild('properties', { static: true }) private properties!: ElementRef;
   @ViewChild('formulario', { static: true }) private formulario!: ElementRef;

@@ -16,7 +16,13 @@ import {
 export class PainelPropriedadesComponent implements OnInit {
 
   @Input() element!: any;
-  @Input() modeler!: any
+  @Input() modeler!: any;
+  @Input() services: any[] = [
+    { id: 1, descricao: 'Envio de email', tipo: 'bpmn:ServiceTask', ativo: false, itens: [] },
+    { id: 2, descricao: 'Recebimento de email', tipo: 'bpmn:ServiceTask', ativo: false, itens: [] },
+    { id: 3, descricao: 'Assinar documento', tipo: 'bpmn:UserTask', ativo: false, itens: [] },
+    { id: 4, descricao: 'Calculo juros', tipo: 'bpmn:BusinessRuleTask', ativo: false, itens: [] }
+  ];
   @ViewChild('icone', { static: true }) private icone!: ElementRef;
   relaoad = true
 
@@ -114,7 +120,13 @@ export class PainelPropriedadesComponent implements OnInit {
 
   }
 
+  listaServicos(){ 
+    return this.services.filter(item => item.tipo === this.dados.type);
+  }
+
 }
+
+
 
 export interface DadosEdicaoElement {
   type: string,
