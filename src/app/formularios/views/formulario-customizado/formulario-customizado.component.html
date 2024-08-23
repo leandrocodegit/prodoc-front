@@ -1,5 +1,5 @@
 <div class="box-formulario-customizado">
-  <div class="box-formulario-customizado-item" style="width: 100%;">
+  <div class="box-formulario-customizado-item" style="width: 70%;">
     <app-titulo (eventEmit)="novoCampo()" [titulo]="'Componentes do formulário'" [icon]="'add_box'"></app-titulo>
     <div class="box-titulo-campos-formulario">
       <b style="max-width: 70px;">Ativo</b>
@@ -18,7 +18,7 @@
         </p>
         <p>{{defineTipo(field)}}</p>
         <p>{{field.label}}</p>
-        <p>{{field.name}}</p>
+        <p>{{field.id}}</p>
         <p>{{field.required ? 'Sim' : 'Não'}}</p>
         <p>{{listaOpcoes(field)}}</p>
         <p class="td-icons" style="flex-grow: 1;">
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="box-formulario-customizado-item" style="min-width: 420px;">
+  <div class="box-formulario-customizado-item" style="width: 30%;min-width: 420px;">
     <app-titulo (eventEmit)="reloadFormulario()" [titulo]="'Visão do formulário'" [icon]="'refresh'"></app-titulo>
     <app-ipunt-texto *ngIf="!reload" [viewSubmit]="true" [fields]="listFieldsAtivos()"></app-ipunt-texto>
     <div *ngIf="reload" class="reload-form">
@@ -41,3 +41,4 @@
     </div>
   </div>
 </div>
+

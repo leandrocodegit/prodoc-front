@@ -23,7 +23,8 @@ button {
   outline: none;
   border: none;
   color: white;
-  border-radius: 5px !important;
+  border-radius: 3px !important;
+  padding: 5px 25px;
 }
 
 .bt-hover:hover {
@@ -165,4 +166,26 @@ button {
 .djs-popup.color-picker .djs-popup-group {
 display: grid;
 grid: auto-flow / 1fr 1fr 1fr;
+}
+
+.mdc-checkbox__native-control:checked~.mdc-checkbox__background
+{
+  background-color: #3adcb6!important;
+  border-color: #3adcb6!important;
+
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mdc-checkbox__background {
+  left: 5px!important;
+}
+
+.mdc-checkbox {
+  flex: 0 0 10px!important;
+}
+
+.mat-mdc-checkbox .mat-internal-form-field{
+  height: 32px!important;
 }

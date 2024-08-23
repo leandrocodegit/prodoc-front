@@ -4,6 +4,8 @@ import { SalvarFecharComponent } from '../salvar-fechar/salvar-fechar.component'
 import { MensagemDialogComponent } from '../mensagem-dialog/mensagem-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TituloComponent } from '../titulo/titulo.component';
+import { DialogInputComponent } from '../dialog-input/dialog-input.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,16 +13,19 @@ import { TituloComponent } from '../titulo/titulo.component';
   declarations: [
     SalvarFecharComponent,
     MensagemDialogComponent,
-    TituloComponent
+    TituloComponent,
+    DialogInputComponent
   ],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   exports: [
     SalvarFecharComponent,
     MensagemDialogComponent,
-    TituloComponent
+    TituloComponent,
+    DialogInputComponent
   ]
 })
 export class UtilModule { }

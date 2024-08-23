@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
-import { PdfDocumentInfo, PdfDocumentPropertiesExtractor } from 'ngx-extended-pdf-viewer';
+import { PdfDocumentInfo } from 'ngx-extended-pdf-viewer';
 import { PrimeIcons } from 'primeng/api';
 
 @Component({

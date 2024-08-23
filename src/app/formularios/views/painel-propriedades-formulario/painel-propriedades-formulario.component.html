@@ -1,0 +1,129 @@
+<div *ngIf="field" class="box-painel-propriedades-titulo">
+  <span class="material-symbols-outlined">
+    {{field.extends.icon}}
+  </span>
+  <p>{{field.label}}</p>
+  <mat-slide-toggle (change)="alterarDetalhes()" [(ngModel)]="field.extends.active"></mat-slide-toggle>
+</div>
+<div *ngIf="field" class="box-painel-propriedades">
+  <div class="box-painel-propriedades-item" style="display: flex;">
+    <mat-checkbox data-bs-toggle="tooltip" title="Quando habilitado o campo é obrigatório seu preenchimento"
+      [(ngModel)]="field.required">Obrigatório</mat-checkbox>
+    <mat-checkbox data-bs-toggle="tooltip" title="Quando habilitado não é possivel editar o campo"
+      [(ngModel)]="field.disabled">Desabilitado</mat-checkbox>
+  </div>
+  <div class="box-painel-propriedades-item">
+    <label class="form-label">Nome</label>
+    <input (input)="alterarDetalhes()" [(ngModel)]="field.label" type="text" class="form-control" id="label"
+      name="label">
+  </div>
+  <div class="box-painel-propriedades-item">
+    <label class="form-label">Id</label>
+    <input data-bs-toggle="tooltip" title="O id deve ser unico no formulário" (input)="alterarDetalhes()"
+      [(ngModel)]="field.id" type="text" class="form-control" id="id" name="id">
+  </div>
+  <div *ngIf="field.type == 'text'" class="propriedas-texto">
+    <div class="box-painel-propriedades-item" style="width: 75%;display: flex;flex-direction: column;">
+      <label class="form-label">Cor do texto</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="field.extends.color" type="color" id="label"
+        style="width: 100%; height: 36px;border: none;" name="label">
+    </div>
+    <div class="box-painel-propriedades-item" style="width: 20%;">
+      <label class="form-label">Fonte</label>
+      <input (input)="alterarDetalhes()" [(ngModel)]="field.extends.fontSize" type="number" class="form-control"
+        id="fontSize" name="fontSize">
+    </div>
+  </div>
+  <div *ngIf="field.type == 'textfield'" class="propriedas-texto">
+    <div class="box-painel-propriedades-item" style="width: 45%;display: flex;flex-direction: column;">
+      <label class="form-label">Tamanho mínimo</label>
+      <input data-bs-toggle="tooltip" title="Define um valor mínimo para números e tamanho para textos"
+        (input)="alterarDetalhes()" [(ngModel)]="field.validate.minLength" type="number" class="form-control"
+        id="minLength" name="minLength">
+    </div>
+    <div class="box-painel-propriedades-item" style="width: 45%;">
+      <label class="form-label">Tamanho máximo</label>
+      <input data-bs-toggle="tooltip" title="Define um valor máximo para números e tamanho para textos"
+        (input)="alterarDetalhes()" [(ngModel)]="field.validate.maxLength" type="number" class="form-control"
+        id="maxLength" name="maxLength">
+    </div>
+  </div>
+  <div *ngIf="field.type == 'textfield'" class="box-painel-propriedades-item">
+    <label class="form-label">Formatação</label>
+    <input data-bs-toggle="tooltip" title="Expressões regex" (input)="alterarDetalhes()"
+      [(ngModel)]="field.extends.pattern" type="text" class="form-control" id="pattern" name="pattern">
+  </div>
+  <div *ngIf="field.extends.pattern.length > 0" class="box-painel-propriedades-item">
+    <label class="form-label">Mensagem de erro</label>
+    <input data-bs-toggle="tooltip" title="Mensagem de erro que define a expressão" (input)="alterarDetalhes()"
+      [(ngModel)]="field.extends.message" type="text" class="form-control" id="message" name="message">
+  </div>
+  <div class="box-painel-propriedades-item">
+    <label class="form-label">Descrição</label>
+    <textarea (input)="alterarDetalhes()" [(ngModel)]="field.description" type="text" class="form-control"
+      id="description" name="description"></textarea>
+  </div>
+  <div *ngIf="false" class="box-painel-propriedades-item">
+    <label class="form-label">Esconder campo</label>
+    <textarea (input)="alterarDetalhes()" [(ngModel)]="field.conditional.hide" placeholder="Script json" type="text"
+      class="form-control" id="hide" name="hide" data-bs-toggle="tooltip"
+      title="{ &quot;id &quot;:  &quot;idCampo&quot;, &quot;condicao &quot;:  &quot;== &quot;,  &quot;valor &quot;:  &quot; &quot;}"></textarea>
+  </div>
+  <div class="box-painel-propriedades-item">
+    <div *ngIf="field.extends.subtype === 'file'" class="p-2">
+      <label style="margin-bottom: 7px;">Formato arquivo</label>
+      <div class="form-check">
+        <label for="descricao">Arquivo pdf</label>
+        <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novoTipoArquivo('pdf')"
+          [checked]="possuiExtensao('pdf')">
+      </div>
+      <div class="form-check">
+        <label for="descricao">Imagens</label>
+        <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novoTipoArquivo('imagem')"
+          [checked]="possuiExtensao('imagem')">
+      </div>
+      <div class="form-check">
+        <label for="descricao">Arquivos office</label>
+        <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novoTipoArquivo('office')"
+          [checked]="possuiExtensao('office')">
+      </div>
+      <div class="form-check">
+        <label for="descricao">Videos</label>
+        <input type="text" class="form-check-input checkbox" type="checkbox" (click)="novoTipoArquivo('video')"
+          [checked]="possuiExtensao('video')">
+      </div>
+    </div>
+  </div>
+  <div *ngIf="field.type == 'select' || field.type == 'radio'" class="box-painel-propriedades-item">
+    <app-titulo [titulo]="'Opções'" [destacarTitulo]="true" [viewTitulo]="false" [viewHead]="false"></app-titulo>
+    <div class="box-painel-propriedades-opcoes">
+      <input (input)="alterarDetalhes()" [(ngModel)]="opcao.label" type="text" class="form-control" id="defaultValue"
+        name="defaultValue">
+      <span (click)="adicionarOpcao()" class="material-symbols-outlined">
+        add
+      </span>
+    </div>
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let opcao of field.values">
+          <td>{{opcao.label}}</td>
+          <td>
+            <p class="td-icons" style="flex-grow: 1;">
+              <span (click)="editarOpcao(opcao)" class="material-symbols-outlined">
+                edit_square
+              </span>
+              <span (click)="removerOpcao(opcao)" rem class="material-symbols-outlined">
+                delete
+              </span>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="(field.type == 'radio' || field.type == 'select') && field.values.length" class="box-painel-propriedades-item">
+    <label class="form-label">Valor padrão</label>
+    <input (input)="alterarDetalhes()" [(ngModel)]="field.defaultValue" type="text" class="form-control"
+      id="defaultValue" name="defaultValue">
+  </div>
+</div>

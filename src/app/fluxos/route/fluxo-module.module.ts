@@ -19,6 +19,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CriarFluxoBpmnComponent } from '../views/criar-fluxo-bpmn/criar-fluxo-bpmn.component';
 import { PainelPropriedadesComponent } from '../views/criar-fluxo-bpmn/painel-propriedades/painel-propriedades.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { EditToolsComponent } from '../views/criar-fluxo-bpmn/edit-tools/edit-tools.component';
 
 
 @NgModule({
@@ -32,8 +33,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     DescricaoFluxoEtapasComponent,
     FormularioNovaEtapaComponent,
     CriarFluxoBpmnComponent,
-    PainelPropriedadesComponent
-  ],
+    PainelPropriedadesComponent,
+    EditToolsComponent
+   ],
   imports: [
     CommonModule,
     FluxoRoutingModule,
@@ -47,6 +49,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     UtilModule,
     MatSlideToggleModule,
     MatCheckboxModule
-  ]
-})
+  ],
+ })
 export class FluxoModule { }

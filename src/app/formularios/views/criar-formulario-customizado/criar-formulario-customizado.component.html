@@ -1,0 +1,66 @@
+<div *ngIf="!visaoFormulario" class="box-componentes">
+  <div cdkDropListGroup style="display: flex;width: 70%;">
+    <div class="box-componente box-componente-elementos">
+      <div>
+        <app-titulo [padding]="'13px'" [titulo]="'Componentes'"></app-titulo>
+        <div cdkDropList [cdkDropListData]="items" class="box-componentes-itens" cdkDropListSortingDisabled
+          (cdkDropListDropped)="moveDrop($event)">
+          @for (item of items; track item) {
+          <div class="box-componente-item" cdkDrag>
+            <span class="material-symbols-outlined">
+              {{item.icone}}
+            </span>
+            <p>{{item.titulo}}</p>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="footer">
+        <button (click)="salvar()" type="submit" class="bt-hover">Salvar formulário</button>
+      </div>
+    </div>
+    <div class="box-componente">
+      <app-titulo [padding]="'13px'" [titulo]="'Visão do formulário'" (eventEmit)="visualizarForumario()"
+        [icon]="'visibility'"></app-titulo>
+      <div cdkDropList [cdkDropListData]="fields" class="box-formulario" (cdkDropListDropped)="addDrop($event)">
+        @for (field of fields; track field) {
+        <div class="box-elemento">
+          <div (click)="editarIten(field)" class="box-elemento-item" style="width: 99%;">
+            <app-endereco cdkDrag *ngIf="field.extends.subtype == 'endereco'" [field]="field"
+              [form]="form"></app-endereco>
+            <app-input-field cdkDrag *ngIf="field.type == 'textfield'" [field]="field" [form]="form"></app-input-field>
+            <app-input-field cdkDrag *ngIf="field.type == 'textarea'" [field]="field" [form]="form"></app-input-field>
+            <app-radio-field cdkDrag *ngIf="field.type == 'radio'" [field]="field" [form]="form"></app-radio-field>
+            <app-checkbox-field cdkDrag *ngIf="field.extends.subtype == 'checkbox'" [field]="field"
+              [form]="form"></app-checkbox-field>
+            <app-cordenadas-field cdkDrag *ngIf="field.extends.subtype == 'cordenadas'" [field]="field"
+              [form]="form"></app-cordenadas-field>
+            <app-select-field cdkDrag *ngIf="field.type == 'select'" [field]="field" [form]="form"></app-select-field>
+            <app-tabela cdkDrag *ngIf="field.type == 'table'" [field]="field" [form]="form"></app-tabela>
+            <p cdkDrag *ngIf="field.type == 'text' && field.extends.subtype == 'p'" [style.color]="field.extends.color"
+              style="padding: 0 10px;" [style.font-size]="field.extends.fontSize + 'px'">{{field.text}}</p>
+            <h5 cdkDrag *ngIf="field.type == 'text' && field.extends.subtype == 'h5'"
+              [style.color]="field.extends.color" style="padding: 0 10px;"
+              [style.font-size]="field.extends.fontSize + 'px'">{{field.text}}</h5>
+            <small *ngIf="esconderCampo(field)" class="text-warnig">Campo será oculto ao atender a condição</small>
+          </div>
+          <div class="box-elemento-item-delete">
+            <span class="material-symbols-outlined">
+              delete
+            </span>
+          </div>
+        </div>
+        }
+      </div>
+
+    </div>
+  </div>
+  <div class="box-componente" style="width: 30%;">
+    <app-painel-propriedades-formulario [field]="fieldSelecionado"></app-painel-propriedades-formulario>
+  </div>
+</div>
+<div *ngIf="visaoFormulario">
+  <app-titulo [titulo]="'Visão do formulário'" (eventEmit)="visualizarForumario()"
+    [icon]="'visibility_off'"></app-titulo>
+  <app-visao-formulario [fields]="fields"></app-visao-formulario>
+</div>

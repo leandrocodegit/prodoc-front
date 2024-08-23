@@ -2,16 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f7f7f7;
+  background: #f1f2f4;
   color: #616161;
-  padding: 5px 5px;
-  border-radius: 5px;
+  border-radius: 1px;
   margin-bottom: 15px;
-  border: solid #e7e7e7 thin;
+  border: solid #ebebeb thin;
 }
 
 .destaque{
-  background: #49938d!important;
+  background: #8b9898 !important;
   color: white;
 }
 

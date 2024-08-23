@@ -6,6 +6,9 @@
     </div>
     <button (click)="exportDiagram()">Export Diagram</button>
     <div #properties style="width: 30%; height: 100%; border: 1px solid #ccc;background: rgb(240, 240, 240);display: block;">
+      <app-edit-tools (onDownloadSvg)=handleDownloadSvg() (onDownloadXml)=handleDownloadXml() (onRedo)=handleRedo()
+      (onSave)=handleSave() (onUndo)=handleUndo() (onZoomIn)=handleZoom(0.1)
+      (onZoomOut)=handleZoom(-0.1) (onZoomReset)=handleZoom($event)></app-edit-tools>
 
 </div>
 

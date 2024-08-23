@@ -84,10 +84,9 @@ export class ContainerMapaComponent implements OnInit, OnDestroy, AfterViewInit 
 
     mapa.on('click', (e: any) => {
 
-      this.field.value = e.latlng.lat + ':' + e.latlng.lng;
+      this.field.defaultValue = e.latlng.lat + ':' + e.latlng.lng;
 
-     // var subscribe = this.mapaService.cordenadasSelect.get(this.field.name)
-      if (true) {
+       if (true) {
         this.mapaService.cordenadasSelect.emit({
           lat: e.latlng.lat,
           lng: e.latlng.lng,

@@ -12,7 +12,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class FormularioCustomizadoComponent implements OnInit {
 
-  @Input() fields: any[] = [];
+  @Input() fields: Field[] = [];
   protected reload = true;
 
 
@@ -53,7 +53,7 @@ export class FormularioCustomizadoComponent implements OnInit {
   }
 
   ativarIten(field: Field) {
-    field.active = !field.active
+    field.extends.active = !field.extends.active
   }
 
   defineTipo(field: Field) {
@@ -69,6 +69,7 @@ export class FormularioCustomizadoComponent implements OnInit {
       case 'email': return 'Email';
       case 'file': return 'Arquivo';
       case 'endereco': return 'Endereço';
+      case 'date': return 'Data';
 
 
     }
@@ -84,19 +85,19 @@ export class FormularioCustomizadoComponent implements OnInit {
   }
 
   listaOpcoes(field: Field) {
-    if (field.options && field.options.length)
-      return field.options.map(item => item).reduce((a, b) => a + ', ' + b);
+    if (field.values && field.values.length)
+      return field.values.map(item => item).reduce((a, b) => a + ', ' + b);
     return '*'
   }
 
   listFieldsAtivos(){
-    return this.fields.filter(field => field.active);
+    return this.fields.filter(field => field.extends.active);
   }
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-          
+
     } else {
       transferArrayItem(
         event.previousContainer.data,

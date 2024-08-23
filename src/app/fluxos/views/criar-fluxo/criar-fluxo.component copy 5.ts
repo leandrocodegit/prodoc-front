@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { PrimeIcons, TreeNode } from 'primeng/api';
-import { ETAPAS } from '../../Etapas';
-import { Etapa } from '../../Etapa.model';
-import { FormularioNovaEtapaComponent } from '../../formulario-nova-etapa/formulario-nova-etapa.component';
-
+ 
 @Component({
   selector: 'app-criar-fluxo',
   templateUrl: './criar-fluxo.component.html',

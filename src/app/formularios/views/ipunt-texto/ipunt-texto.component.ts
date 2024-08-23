@@ -27,21 +27,21 @@ export class IpuntTextoComponent implements OnInit {
     this.fields.forEach(field => {
 
       if (field.type === 'cordenadas') {
-        
+
         this.form.addControl(
-          field.name + 'lng',
-          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[0] : '' || '', this.mapValidators(field.required, field.type))
+          field.id + 'lng',
+          this.fb.control(field.defaultValue && field.defaultValue.includes(':') ? field.defaultValue.split(':')[0] : '' || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name,
-          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[1] : '' || '', this.mapValidators(field.required, field.type))
+          field.id,
+          this.fb.control(field.defaultValue && field.defaultValue.includes(':') ? field.defaultValue.split(':')[1] : '' || '', this.mapValidators(field.validate, field.type))
         );
       }
 
       if (field.type == 'endereco') {
 
-        if (field.value === '')
-          field.value = {
+        if (field.defaultValue === '')
+          field.defaultValue = {
             cep: "",
             state: "",
             city: "",
@@ -56,52 +56,70 @@ export class IpuntTextoComponent implements OnInit {
           }
 
         this.form.addControl(
-          field.name + 'cep',
-          this.fb.control(field.value.cep || '', this.mapValidators(field.required, field.type))
+          field.id + 'cep',
+          this.fb.control(field.defaultValue.cep || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'state',
-          this.fb.control(field.value.state || '', this.mapValidators(field.required, field.type))
+          field.id + 'state',
+          this.fb.control(field.defaultValue.state || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'city',
-          this.fb.control(field.value.city || '', this.mapValidators(field.required, field.type))
+          field.id + 'city',
+          this.fb.control(field.defaultValue.city || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'neighborhood',
-          this.fb.control(field.value.neighborhood || '', this.mapValidators(field.required, field.type))
+          field.id + 'neighborhood',
+          this.fb.control(field.defaultValue.neighborhood || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'street',
-          this.fb.control(field.value.street || '', this.mapValidators(field.required, field.type))
+          field.id + 'street',
+          this.fb.control(field.defaultValue.street || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'numero',
-          this.fb.control(field.value.numero || '', this.mapValidators(field.required, field.type))
+          field.id + 'numero',
+          this.fb.control(field.defaultValue.numero || '', this.mapValidators(field.validate, field.type))
         );
         this.form.addControl(
-          field.name + 'complemento',
-          this.fb.control(field.value.complemento || '', this.mapValidators(false, field.type))
+          field.id + 'complemento',
+          this.fb.control(field.defaultValue.complemento || '', this.mapValidators(undefined, field.type))
         );
       } else {
 
         this.form.addControl(
-          field.name,
-          this.fb.control(field.value || '', this.mapValidators(field.required, field.type))
+          field.id,
+          this.fb.control(field.defaultValue || '', this.mapValidators(field.validate, field.type))
         );
       }
     });
 
+    var valida = this.form.controls['idade'].validator
+
   }
 
-  mapValidators(required: boolean, type: string) {
+  mapValidators(validate: {
+    minLength: number,
+    maxLength: number,
+    pattern: string,
+    required: boolean
+  }, type: string) {
+
+    if(!validate){
+      return [];
+    }
     const formValidators = [];
     {
-      if (required) {
+      if (validate.required) {
         formValidators.push(Validators.required);
         if (type === 'email') {
           formValidators.push(Validators.email);
         }
+      }
+      if (validate.maxLength > 0 && validate.maxLength > validate.minLength) {
+        formValidators.push(Validators.min(validate.minLength));
+        formValidators.push(Validators.max(validate.maxLength));
+      }
+      if (validate.pattern != '') {
+        formValidators.push(Validators.pattern(validate.pattern));
       }
     }
     return formValidators;
@@ -112,14 +130,14 @@ export class IpuntTextoComponent implements OnInit {
     this.fields.forEach(field => {
 
       if (field.type == 'endereco') {
-        field.value = {
-          cep: this.form.controls[field.name + 'cep'].value,
-          state: this.form.controls[field.name + 'state'].value,
-          city: this.form.controls[field.name + 'city'].value,
-          neighborhood: this.form.controls[field.name + 'neighborhood'].value,
-          street: this.form.controls[field.name + 'street'].value,
-          numero: this.form.controls[field.name + 'numero'].value,
-          complemento: this.form.controls[field.name + 'complemento'].value,
+        field.defaultValue = {
+          cep: this.form.controls[field.id + 'cep'].value,
+          state: this.form.controls[field.id + 'state'].value,
+          city: this.form.controls[field.id + 'city'].value,
+          neighborhood: this.form.controls[field.id + 'neighborhood'].value,
+          street: this.form.controls[field.id + 'street'].value,
+          numero: this.form.controls[field.id + 'numero'].value,
+          complemento: this.form.controls[field.id + 'complemento'].value,
           location: {
             type: "",
             "": {}
@@ -127,9 +145,9 @@ export class IpuntTextoComponent implements OnInit {
         }
       }
       else if (field.type == 'cordenadas') {
-        field.value = `${this.form.controls[field.name].value}:${this.form.controls[field.name + 'lng'].value}`
+        field.defaultValue = `${this.form.controls[field.id].value}:${this.form.controls[field.id + 'lng'].value}`
       } else {
-        field.value = this.form.controls[field.name].value;
+        field.defaultValue = this.form.controls[field.id].value;
       }
 
     })
@@ -139,3 +157,4 @@ export class IpuntTextoComponent implements OnInit {
 
   }
 }
+

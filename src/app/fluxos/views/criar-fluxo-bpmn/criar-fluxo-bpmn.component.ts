@@ -8,6 +8,7 @@ import customTranslate from './customTranslate/customTranslate';
 import paletteProvider from './custom-palette';
 import contextPadProvider from './context-pad';
 import ColorPopupProvider from './ColorPopupProvider';
+import * as xml2js from 'xml2js';
 
 import {
   BpmnPropertiesPanelModule,
@@ -32,7 +33,10 @@ export class CriarFluxoBpmnComponent implements OnInit {
   private bpmnJS!: BpmnJS
   protected element!: any
   protected etapas: Etapa[] = ETAPAS;
-  public modeler: Modeler = new Modeler({});
+  public modeler: any;
+  public state = {
+    scale: 1
+  };
   protected dados: DadosEdicaoElement;
 
 
@@ -82,9 +86,7 @@ export class CriarFluxoBpmnComponent implements OnInit {
     };
 
     this.modeler = new Modeler({
-      container: this.canvas.nativeElement,
-      width: '100%',
-      height: '600px',
+      container: this.canvas.nativeElement, 
       customTranslateModule,
       propertiesPanel: {
         parent: this.properties.nativeElement
@@ -393,5 +395,92 @@ export class CriarFluxoBpmnComponent implements OnInit {
         jobPriority: 0
       }
     }
+  }
+
+  selected(value) {
+    const modeling = this.modeler.get('modeling');
+    modeling.updateProperties(this.element, {
+      'custom-property': value
+    });
+    // 节点改变颜色
+    modeling.setColor(this.element, {
+      fill: 'yellow',
+      stroke: 'orange'
+    })
+  }
+
+
+  download = (type, data, name) => {
+    let dataTrack = '';
+    const a = document.createElement('a');
+
+    switch (type) {
+      case 'xml':
+        dataTrack = 'bpmn';
+        break;
+      case 'svg':
+        dataTrack = 'svg';
+        break;
+      default:
+        break;
+    }
+
+    name = name || `diagram.${dataTrack}`;
+
+    a.setAttribute('href', `data:application/bpmn20-xml;charset=UTF-8,${encodeURIComponent(data)}`);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('dataTrack', `diagram:download-${dataTrack}`);
+    a.setAttribute('download', name);
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
+  handleRedo = () => {
+    this.modeler.get('commandStack').redo();
+  };
+
+
+  handleUndo = () => {
+    this.modeler.get('commandStack').undo();
+  };
+
+  handleDownloadSvg = () => {
+    this.modeler.saveSVG({ format: true }).then(  data => {
+      this.download('svg', data.svg, 'diagrama.svg');
+    });
+  };
+
+
+  handleDownloadXml = () => {
+    this.modeler.saveXML({ format: true }).then( data => {
+      this.download('xml', data.xml, 'xml.xml');
+    });
+  };
+
+
+  handleZoom = (radio) => {
+    const newScale = !radio
+      ? 1.0
+      : this.state.scale + radio <= 0.2
+        ? 0.2
+        : this.state.scale + radio;
+
+    this.modeler.get('canvas').zoom(newScale);
+    this.state.scale = newScale;
+  };
+
+
+  handleSave() {
+     this.modeler.saveXML({ format: true }).then( result => {
+      console.log(result.xml);
+      const parseString = xml2js.parseString;
+      parseString(result.xml, (err, data) => {
+        const bpmnData = data['bpmn:definitions']['bpmn:process'][0];
+        if (!bpmnData['bpmn:startEvent'] || !bpmnData['bpmn:endEvent']) {
+        }
+      });
+    });
   }
 }

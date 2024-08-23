@@ -1,0 +1,12 @@
+<div *ngFor="let field of fields" class="box-elemento-item" style="width: 99%;margin-left: 20px;">
+  <app-endereco cdkDrag *ngIf="field.extends.subtype == 'endereco'" [field]="field" [form]="form"></app-endereco>
+  <app-input-field cdkDrag *ngIf="field.type == 'textfield'" [field]="field" [form]="form"></app-input-field>
+  <app-input-field cdkDrag *ngIf="field.type == 'textarea'" [field]="field" [form]="form"></app-input-field>
+  <app-radio-field cdkDrag *ngIf="field.type == 'radio'" [field]="field" [form]="form"></app-radio-field>
+  <app-checkbox-field cdkDrag *ngIf="field.extends.subtype == 'checkbox'" [field]="field" [form]="form"></app-checkbox-field>
+  <app-cordenadas-field cdkDrag *ngIf="field.extends.subtype == 'cordenadas'" [field]="field" [form]="form"></app-cordenadas-field>
+  <app-select-field cdkDrag *ngIf="field.type == 'select'" [field]="field" [form]="form"></app-select-field>
+  <app-tabela cdkDrag *ngIf="field.type == 'table'" [field]="field" [form]="form"></app-tabela>
+  <p cdkDrag *ngIf="field.type == 'text' && field.extends.subtype == 'p'" [style.color]="field.extends.color" style="padding: 0 10px;" [style.font-size]="field.extends.fontSize + 'px'">{{field.text}}</p>
+  <h5 cdkDrag *ngIf="field.type == 'text' && field.extends.subtype == 'h5'" [style.color]="field.extends.color" style="padding: 0 10px;" [style.font-size]="field.extends.fontSize + 'px'">{{field.text}}</h5>
+</div>

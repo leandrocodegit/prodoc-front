@@ -29,7 +29,7 @@ export class AdicionarCampoComponent implements OnInit {
 
   adicionar(){
     if(this.field.type != 'select' && this.field.type != 'file')
-      this.field.options = [];
+      this.field.values = [];
     this.dialogRef.close(this.field);
   }
 
@@ -38,16 +38,16 @@ export class AdicionarCampoComponent implements OnInit {
   }
 
   possuiExtensao(extensao: string){
-    if(this.field.options?.find(ext => ext == extensao))
+    if(this.field.values?.find(ext => ext == extensao))
       return true;
     return false;
   }
 
   novaTipoArquivo(extensao: string){
     if(!this.possuiExtensao(extensao))
-      this.field.options?.push(extensao)
+      this.field.values?.push(extensao)
     else{
-      this.field.options = this.field.options?.filter(ext => ext != extensao)
+      this.field.values = this.field.values?.filter(ext => ext != extensao)
     }
   }
 

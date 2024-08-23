@@ -67,8 +67,8 @@
   <input [(ngModel)]="field.label" type="text" class="form-control" name="descricao">
 </div>
 <div class="p-2" style="display: flex;flex-direction: column;">
-    <mat-slide-toggle [(ngModel)]="field.active" style="margin-bottom: 3px;">Habibitar campo</mat-slide-toggle>
-    <mat-slide-toggle [(ngModel)]="field.required">Tornar obrigatório</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="field.extends.active" style="margin-bottom: 3px;">Habibitar campo</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="field.validate.required">Tornar obrigatório</mat-slide-toggle>
 </div>
 <app-salvar-fechar (fecharEmit)="fechar()" (salvarEmit)="adicionar()"></app-salvar-fechar>
 </div>

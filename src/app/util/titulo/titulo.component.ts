@@ -9,6 +9,7 @@ export class TituloComponent {
 
   @Input() titulo = ''
   @Input() destacar = false
+  @Input() padding = '5px'
   @Input() icon?: any
   @Output() eventEmit = new EventEmitter();
 

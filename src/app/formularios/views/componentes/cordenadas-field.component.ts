@@ -14,12 +14,12 @@ import { DataMapaComponent } from '../../../mapa/views/data-mapa/data-mapa.compo
   <div class="componente-cordenadas">
     <div style="padding-right: 10px">
       <label>Latitude</label>
-      <input [(ngModel)]="latitude" [formControlName]="field.name" [type]="field.type" class="form-control input-cusomizado" />
+      <input [(ngModel)]="latitude" [formControlName]="field.id" [type]="field.type" class="form-control input-cusomizado" />
     </div>
     <div>
       <label>Longitude</label>
       <div class="componente-customizado-icon">
-        <input [(ngModel)]="longitude" [formControlName]="field.name + 'lng'" [type]="field.type" class="form-control input-cusomizado" />
+        <input [(ngModel)]="longitude" [formControlName]="field.id + 'lng'" [type]="field.type" class="form-control input-cusomizado" />
         <span (click)=abrirMapa() class="componente-cordenadas material-symbols-outlined">
           my_location
         </span>
@@ -30,7 +30,7 @@ import { DataMapaComponent } from '../../../mapa/views/data-mapa/data-mapa.compo
     </div>
   </div>
   <div *ngIf="!isValid && isTouched" class="error-message">
-    <div class="text-danger" *ngIf="possuiErro(form.controls[field.name])">
+    <div class="text-danger" *ngIf="possuiErro(form.controls[field.id])">
       {{ field.label }} é obrigatório.
     </div>
   </div>
@@ -56,27 +56,21 @@ export class CordenadasFieldComponent implements OnInit, OnDestroy {
 
   }
   ngOnInit(): void {
-   // this.mapaService.cordenadasSelect.set(this.field.name, new EventEmitter());
-   // var subscribe = this.mapaService.cordenadasSelect.get(this.field.name)
-   // if(subscribe)
+
    this.mapaService.cordenadasSelect.subscribe(data => {
       if (data && data.field) {
-        if (data.field.name === this.field.name) {
-          if (this.form.controls[this.field.name] && this.form.controls[this.field.name + 'lng']) {
+        if (data.field.id === this.field.id) {
+          if (this.form.controls[this.field.id] && this.form.controls[this.field.id + 'lng']) {
 
-            this.form.controls[data.field.name].setValue(this.field.value && this.field.value.includes(':')? this.field.value.split(':')[0] : '');
-           this.form.controls[data.field.name + 'lng'].setValue(this.field.value && this.field.value.includes(':')? this.field.value.split(':')[1] : '');
+            this.form.controls[data.field.id].setValue(this.field.defaultValue && this.field.defaultValue.includes(':')? this.field.defaultValue.split(':')[0] : '');
+           this.form.controls[data.field.id + 'lng'].setValue(this.field.defaultValue && this.field.defaultValue.includes(':')? this.field.defaultValue.split(':')[1] : '');
           }
         }
       }
     })
   }
   ngOnDestroy(): void {
-  //  var subscribe = this.mapaService.cordenadasSelect.get(this.field.name)
-  //  if(subscribe){
-  //    subscribe.unsubscribe()
-  //    this.mapaService.cordenadasSelect.delete(this.field.name)
-  //  }
+ 
 
   }
 
@@ -95,14 +89,14 @@ export class CordenadasFieldComponent implements OnInit, OnDestroy {
   }
 
   get isValid(): boolean {
-    if (this.form.controls[this.field.name] && this.form.controls[this.field.name + 'lng'])
-      return this.form.controls[this.field.name].valid && this.form.controls[this.field.name + 'lng'].valid;
+    if (this.form.controls[this.field.id] && this.form.controls[this.field.id + 'lng'])
+      return this.form.controls[this.field.id].valid && this.form.controls[this.field.id + 'lng'].valid;
     return false;
   }
 
   get isTouched(): boolean {
-    if (this.form.controls[this.field.name] && this.form.controls[this.field.name + 'lng'])
-      return this.form.controls[this.field.name].touched || this.form.controls[this.field.name + 'lng'].touched;
+    if (this.form.controls[this.field.id] && this.form.controls[this.field.id + 'lng'])
+      return this.form.controls[this.field.id].touched || this.form.controls[this.field.id + 'lng'].touched;
     return false
   }
 }

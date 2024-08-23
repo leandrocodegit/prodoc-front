@@ -68,12 +68,12 @@ export class EnderecoComponent {
 
     if (event.target.value && event.target.value.length == 8)
       this.http.get('https://brasilapi.com.br/api/cep/v2/' + event.target.value).subscribe((response: any) => {
-        this.form.controls[this.field.name + 'street'].setValue(response.street)
-        this.form.controls[this.field.name + 'street'].valid
-        this.form.controls[this.field.name + 'state'].setValue(response.state)
-        this.form.controls[this.field.name + 'neighborhood'].setValue(response.neighborhood)
+        this.form.controls[this.field.id + 'street'].setValue(response.street)
+        this.form.controls[this.field.id + 'street'].valid
+        this.form.controls[this.field.id + 'state'].setValue(response.state)
+        this.form.controls[this.field.id + 'neighborhood'].setValue(response.neighborhood)
         this.listaCidade(response.state)
-        this.form.controls[this.field.name + 'city'].setValue(this.normalizeText(response.city))
+        this.form.controls[this.field.id + 'city'].setValue(this.normalizeText(response.city))
       })
 
   }

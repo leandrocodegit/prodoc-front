@@ -1,0 +1,7 @@
+<div class="box-dialog">
+  <label class="form-label">{{dados.titulo}}</label>
+  <input [(ngModel)]="dados.text" type="text" class="form-control">
+</div>
+<div class="box-dialog">
+  <app-salvar-fechar (salvarEmit)="salvar()" (fecharEmit)="fechar()"></app-salvar-fechar>
+</div>

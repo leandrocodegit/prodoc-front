@@ -45,8 +45,11 @@ export class CriarFormularioComponent implements OnInit {
           {
             translate: ['value', customTranslate]
           }
-        ] 
+        ]
       });
+      const palette = this.formEditor.get('palette');
+
+
 
 
       this.loadForm({
@@ -145,6 +148,7 @@ export class CriarFormularioComponent implements OnInit {
       this.formEditor.importSchema(schema);
 
       var mo = this.formContainer.nativeElement.innerHTML
+
 
     }
 }

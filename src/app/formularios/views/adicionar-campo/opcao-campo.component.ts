@@ -32,7 +32,7 @@ export class OpcaoSeletorCampoComponent implements OnInit {
       this.field = new Field()
     }
     if (this.item) {
-      this.index = this.field.options?.indexOf(this.item)
+      this.index = this.field.values?.indexOf(this.item)
     }
   }
 
@@ -42,11 +42,11 @@ export class OpcaoSeletorCampoComponent implements OnInit {
 
 
   novaOpcao() {
-    if (this.item && (this.index || this.index === 0) && this.field.options?.length) {
-      this.field.options[this.index] = this.item;
+    if (this.item && (this.index || this.index === 0) && this.field.values?.length) {
+      this.field.values[this.index] = this.item;
     } else {
-      if (!this.field.options?.find(option => option == this.item))
-        this.field.options?.push(this.item)
+      if (!this.field.values?.find(option => option == this.item))
+        this.field.values?.push(this.item)
     }
     this.dialogRef.close(this.field);
   }

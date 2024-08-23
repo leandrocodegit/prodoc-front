@@ -11,135 +11,246 @@ export class FiedlService {
 
   constructor() { }
 
+  validaExpressao(scriptJson: any, fields: Field[]){
+    if (scriptJson == '')
+      return false;
+    try {
+
+      let cmd: any = JSON.parse(scriptJson)
+      let value = fields.find(field => field.id == cmd.id)
+
+
+      if (value && value.value) {
+        let el = `{${value.value} ${cmd.condicao} ${cmd.valor}}`
+      //  const result = eval(el);
+      }
+
+      return true
+    } catch (error) {
+      console.log(error);
+
+    }
+    return false;
+  }
+
   public listaFilds(): Field[] {
 
     return [
       {
-        id: 8,
-        type: 'endereco',
-        label: 'Endereço residencial',
-        name: 'endereco',
-        pattern: '',
-        value: {
-          cep: "09855340",
-          state: "SP",
-          city: "São Bernardo do Campo",
-          neighborhood: "Cooperativa",
-          street: "Rua Serra da Prata",
-          service: "open-cep",
-          location: {
-              type: "Point",
-              coordinates: {}
-          }
-      },
-        options: [],
-        multiple: false,
-        required: true,
-        active: true
-      },
-      {
-        id: 8,
-        type: 'cordenadas',
-        label: 'Localização',
-        name: 'cordenada1',
-        pattern: '',
-        value: '10:10',
-        options: [],
-        multiple: false,
-        required: true,
-        active: true
-      },
-      {
-        id: 7,
-        type: 'file',
-        label: 'Escritura',
-        name: 'escritura1',
-        pattern: '',
+        label: 'Nome',
+        type: 'textfield',
+        text: '',
+        extends: {
+          subtype: 'text',
+          conditional: '',
+          color: 'black',
+          fontSize: 13,
+          active: true,
+          multiple: false,
+          icon: '',
+          options:[],
+          pattern: '',
+          message: '',
+        },
         value: '',
-        options: ['pdf','imagem','office','video'],
+        subtype: 'color',
+        layout: '',
+        id: 'dataNascimento',
+        key: '',
+        validate: {
+          minLength: 0,
+          maxLength: 0,
+          pattern: '',
+          required: true
+        },
+        description: '',
+        defaultValue:'',
+        readonly: false,
+        disabled: false,
         multiple: false,
-        required: true,
-        active: true
+        searchable: false,
+        disallowPassedDates: false,
+        values: [],
+        properties: '',
+        conditional: {
+          hide: ''
+        },
+        timeLabel: '',
+        timeSerializingFormat: '',
+        timeInterval: 0,
       },
       {
-        id: 7,
-        type: 'file',
-        label: 'Escritura multipla',
-        name: 'escritura2',
-        pattern: '',
+        label: 'Nome',
+        type: 'textfield',
+        text: '',
+        extends: {
+          subtype: 'text',
+          conditional: '',
+          color: 'black',
+          fontSize: 13,
+          active: true,
+          multiple: false,
+          icon: '',
+          options:[],
+          pattern: '',
+          message: '',
+        },
         value: '',
-        options: ['pdf','office'],
-        multiple: true,
-        required: true,
-        active: true
+        subtype: 'datetime',
+        layout: '',
+        id: 'dataNascimento',
+        key: '',
+        validate: {
+          minLength: 0,
+          maxLength: 0,
+          pattern: '',
+          required: true
+        },
+        description: '',
+        defaultValue:'',
+        readonly: false,
+        disabled: false,
+        multiple: false,
+        searchable: false,
+        disallowPassedDates: false,
+        values: [],
+        properties: '',
+        conditional: {
+          hide: ''
+        },
+        timeLabel: '',
+        timeSerializingFormat: '',
+        timeInterval: 0,
       },{
-      id: 1,
-      type: 'text',
-      label: 'Nome',
-      name: 'nome',
-      value: 'Leandro',
-      options: [],
-      pattern: '',
-      multiple: false,
-      required: true,
-      active: true
-    }, {
-      id: 2,
-      type: 'text',
-      label: 'Sobrenome',
-      name: 'sobrenome',
-      value: 'Pereire de Oliveira',
-      pattern: '',
-      options: [],
-      multiple: false,
-      required: true,
-      active: true
-    }, {
-      id: 3,
-      type: 'number',
-      label: 'Idade',
-      name: 'idade',
-      value: '36',
-      pattern: '',
-      options: [],
-      multiple: false,
-      required: true,
-      active: true
-    }, {
-      id: 4,
-      type: 'checkbox',
-      label: 'Verdadeiro',
-      name: 'verdadeiro',
-      value: false,
-      pattern: '',
-      options: [],
-      multiple: false,
-      required: true,
-      active: true
-    },
-    {
-      id: 5,
-      type: 'select',
-      label: 'Estado',
-      name: 'estado',
-      value: 'SP',
-      options: ['SP', 'MG'],
-      pattern: '',
-      multiple: false,
-      required: true,
-      active: true
-    },
-    {
-      id: 6,
-      type: 'textarea',
-      label: 'Observações',
-      name: 'observacao',
-      value: 'Mora em São Bernardo do Campo',
-      options: [],
-      pattern: '',
-      multiple: false,
-      required: true,
-      active: true
-    }]
+        label: 'Idade',
+        type: 'textfield',
+        text: '',
+        extends: {
+          subtype: 'text',
+          conditional: '',
+          color: 'black',
+          fontSize: 13,
+          active: true,
+          multiple: false,
+          icon: '',
+          options:[],
+          pattern: '',
+          message: '',
+        },
+        value: '',
+        subtype: 'number',
+        layout: '',
+        id: 'idade',
+        key: '',
+        validate: {
+          minLength: 10,
+          maxLength: 20,
+          pattern: '',
+          required: true
+        },
+        description: '',
+        defaultValue:'',
+        readonly: false,
+        disabled: false,
+        multiple: false,
+        searchable: false,
+        disallowPassedDates: false,
+        values: [],
+        properties: '',
+        conditional: {
+          hide: ''
+        },
+        timeLabel: '',
+        timeSerializingFormat: '',
+        timeInterval: 0,
+      },
+      {
+        label: 'Nome',
+        type: 'textfield',
+        text: '',
+        extends: {
+          subtype: 'text',
+          conditional: '',
+          color: 'black',
+          fontSize: 13,
+          active: true,
+          multiple: false,
+          icon: '',
+          options:[],
+          pattern: '',
+          message: '',
+        },
+        value: '',
+        subtype: 'text',
+        layout: '',
+        id: 'idade',
+        key: '',
+        validate: {
+          minLength: 0,
+          maxLength: 2,
+          pattern: '^C-[0-9]+$',
+          required: true
+        },
+        description: '',
+        defaultValue:'',
+        readonly: false,
+        disabled: false,
+        multiple: false,
+        searchable: false,
+        disallowPassedDates: false,
+        values: [],
+        properties: '',
+        conditional: {
+          hide: ''
+        },
+        timeLabel: '',
+        timeSerializingFormat: '',
+        timeInterval: 0,
+
+      },
+      {
+        label: 'Documentos',
+        type: 'text',
+        text: '',
+        extends: {
+          subtype: 'file',
+          conditional: '',
+          color: 'black',
+          fontSize: 13,
+          active: true,
+          multiple: false,
+          icon: '',
+          options:[],
+          pattern: '',
+          message: '',
+        },
+        value: '',
+        subtype: 'file',
+        layout: '',
+        id: 'pdf',
+        key: '',
+        validate: {
+          minLength: 0,
+          maxLength: 0,
+          pattern: '',
+          required: true,
+        },
+        description: '',
+        defaultValue:'',
+        readonly: false,
+        disabled: false,
+        multiple: false,
+        searchable: false,
+        disallowPassedDates: false,
+        values: [],
+        properties: '',
+        conditional: {
+          hide: ''
+        },
+        timeLabel: '',
+        timeSerializingFormat: '',
+        timeInterval: 0,
+      }
+      ]
   }
 }
