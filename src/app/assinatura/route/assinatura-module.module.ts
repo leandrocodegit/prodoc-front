@@ -27,6 +27,9 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatDialogModule,
     UtilModule,
     NgxExtendedPdfViewerModule
+  ],
+  exports: [
+    AssinarDocumentoComponent
   ]
 })
 export class AssinaturaModule { }

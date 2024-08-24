@@ -7,7 +7,7 @@
       "name": "Launch Chrome",
       "request": "launch",
       "type": "chrome",
-      "url": "http://localhost:4300/formulario/drag",
+      "url": "http://localhost:4300/painel/validar",
       "webRoot": "${workspaceFolder}"
     },
     {

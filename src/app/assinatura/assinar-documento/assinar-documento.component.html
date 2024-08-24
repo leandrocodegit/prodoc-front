@@ -6,11 +6,11 @@
     <p>Obrigado, seus documentos foram assinados com sucesso.</p>
   </div>
   <div *ngIf="documentoSelecionado" class="box-assinatura-item" style="width: 80%;">
-    <ngx-extended-pdf-viewer [src]="documentoSelecionado.fileName" [textLayer]="true"
-
-    [height]="'100vh'"
-    (pagesLoaded)="onPagesLoaded($event)">
-    </ngx-extended-pdf-viewer>
+    <pdf-viewer [src]="'assets/cv.pdf'"
+    [render-text]="true"
+    [original-size]="false"
+    style="width: 100%; height: 100vh"
+></pdf-viewer>
   </div>
   <div *ngIf="!todosdocumentosAssinados()" class="box-assinatura-detalhes" style="width: 20%;">
     <div class="box-assinatura-detalhes-item" style="margin: 0;">

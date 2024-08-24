@@ -30,7 +30,7 @@ import { DadosEdicaoElement } from './painel-propriedades/painel-propriedades.co
 })
 export class CriarFluxoBpmnComponent implements OnInit {
 
-  private bpmnJS!: BpmnJS
+  private bpmnJS!: Modeler
   protected element!: any
   protected etapas: Etapa[] = ETAPAS;
   public modeler: any;
@@ -77,8 +77,7 @@ export class CriarFluxoBpmnComponent implements OnInit {
 
   constructor(
     private customTranslateService: CustomTranslateServiceService
-  ) {
-  }
+  ) {}
   ngOnInit(): void {
 
     const customTranslateModule = {
@@ -86,7 +85,7 @@ export class CriarFluxoBpmnComponent implements OnInit {
     };
 
     this.modeler = new Modeler({
-      container: this.canvas.nativeElement, 
+      container: this.canvas.nativeElement,
       customTranslateModule,
       propertiesPanel: {
         parent: this.properties.nativeElement

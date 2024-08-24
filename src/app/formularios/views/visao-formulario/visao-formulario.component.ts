@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Field } from '../../models/Field.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,14 +8,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class VisaoFormularioComponent implements OnInit {
 
-  @Input() fields: Field[] = [];
-  form: FormGroup = {} as FormGroup;
+  @Input() fields: any[] = [];
+  @Input() leitura = false;
+  private form: FormGroup;
 
   constructor(
     private fb: FormBuilder
   ) { }
   ngOnInit(): void {
+
     this.initFormulario();
+    console.log(this.fields);
+
   }
 
   initFormulario(): void {
@@ -26,21 +29,21 @@ export class VisaoFormularioComponent implements OnInit {
     this.form = this.fb.group({});
     this.fields.forEach(field => {
 
-      if (field.type === 'cordenadas') {
+      if (field.extends.subtype === 'cordenadas') {
 
         this.form.addControl(
           field.id + 'lng',
-          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[0] : '' || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({ value: field.value && field.value.includes(':') ? field.value.split(':')[0] : '' || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id,
-          this.fb.control(field.value && field.value.includes(':') ? field.value.split(':')[1] : '' || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({ value: field.value && field.value.includes(':') ? field.value.split(':')[1] : '' || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
       }
 
-      if (field.type == 'endereco') {
+      if (field.extends.subtype == 'endereco') {
 
-        if (field.value === '')
+        if ((field.value  && field.value === '') || !field.value)
           field.value = {
             cep: "",
             state: "",
@@ -57,37 +60,37 @@ export class VisaoFormularioComponent implements OnInit {
 
         this.form.addControl(
           field.id + 'cep',
-          this.fb.control(field.value.cep || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.cep || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'state',
-          this.fb.control(field.value.state || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.state || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'city',
-          this.fb.control(field.value.city || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.city || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'neighborhood',
-          this.fb.control(field.value.neighborhood || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.neighborhood || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'street',
-          this.fb.control(field.value.street || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.street || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'numero',
-          this.fb.control(field.value.numero || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value.numero || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
         this.form.addControl(
           field.id + 'complemento',
-          this.fb.control(field.value.complemento || '', this.mapValidators(undefined, field.extends.subtype))
+          this.fb.control({value: field.value.complemento || '', disabled: this.leitura }, this.mapValidators(undefined, field.extends.subtype))
         );
       } else {
 
         this.form.addControl(
           field.id,
-          this.fb.control(field.value || '', this.mapValidators(field.validate, field.extends.subtype))
+          this.fb.control({value: field.value || '', disabled: this.leitura }, this.mapValidators(field.validate, field.extends.subtype))
         );
       }
     });

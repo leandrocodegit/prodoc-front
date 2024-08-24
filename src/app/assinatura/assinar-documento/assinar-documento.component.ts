@@ -28,7 +28,7 @@ export class AssinarDocumentoComponent implements OnInit {
   outline!: any[];
 
   documentos: any[] = [
-    { nome: 'Curriculo assinado', status: 'AGUARDANDO_ASSINATURA', fileName: 'assets/cv_assinado.pdf', date: '15/10/2020 10:30', icon: PrimeIcons.TIMES, color: '#d9d9d9' },
+   // { nome: 'Curriculo assinado', status: 'AGUARDANDO_ASSINATURA', fileName: 'assets/cv_assinado.pdf', date: '15/10/2020 10:30', icon: PrimeIcons.TIMES, color: '#d9d9d9' },
     { nome: 'Impugnação', status: 'AGUARDANDO_ASSINATURA', fileName: 'assets/1. Impugnação_Conder.pdf', date: '15/10/2020 10:30', icon: PrimeIcons.TIMES, color: '#d9d9d9' },
     { nome: 'Pedido de licenciamento', status: 'AGUARDANDO_ASSINATURA', fileName: 'assets/cv.pdf', date: '15/10/2020 10:30', icon: PrimeIcons.TIMES, color: '#d9d9d9' },
     { nome: 'Curriculo', status: 'AGUARDANDO_ASSINATURA', date: '15/10/2020 14:00', fileName: 'assets/proposta-spcine.pdf', icon: PrimeIcons.TIMES, color: '#d9d9d9' },
@@ -43,22 +43,11 @@ export class AssinarDocumentoComponent implements OnInit {
 
     this.documentoSelecionado = this.documentos[0]
 
-  document.addEventListener('selectionchange', this.onTextSelect.bind(this));
+ // document.addEventListener('selectionchange', this.onTextSelect.bind(this));
 }
-public fileInfo!: PdfDocumentInfo;
-public onPagesLoaded(pdfViewer: any) {
-  const pdfDocument = pdfViewer.source.pdfDocument;
 
-  pdfDocument?.getMetadata().then((metadata: any) => {
-    console.log('Title:', metadata.info.Title);
-    console.log('Author:', metadata.info.Author);
-    console.log('Subject:', metadata.info.Subject);
-    console.log('Keywords:', metadata.info.Keywords);
-    console.log('Producer:', metadata.info.Producer);
-    console.log('Creation Date:', metadata.info.CreationDate);
-    console.log('Modification Date:', metadata.info.ModDate);
-    console.log(metadata)
-  });
+public onPagesLoaded(pdfViewer: any) {
+
 }
 
 navigateTo(destination: any) {
@@ -66,16 +55,7 @@ navigateTo(destination: any) {
 }
 
 onTextSelect(event: any) {
-  const selectedText = window.getSelection()?.toString();
 
-  if (selectedText && selectedText.trim() !== '') {
-    console.log('Texto selecionado:', selectedText);
-    // Aqui você pode implementar a lógica para destacar o texto, salvar a seleção, etc.
-  }
-
-  if(selectedText)
-    this.pdfComponent.pdfViewer.container.innerHTML = (`<mark>${'selectedText'}</mark>`)
-  console.log(selectedText);
 
 }
 
@@ -140,7 +120,6 @@ onTextSelect(event: any) {
     this.currentPage = event.pageNumber;
     if (this.currentPage === this.totalPages) {
       this.pdfRead = true;
-      console.log('PDF foi lido!');
     }
 
      this.pdfComponent.pdfViewer.getAllText().then(text => {

@@ -1,0 +1,32 @@
+<div class="box-tarefas-usuario">
+  <div class="box-tarefas-atividades">
+    <div (click)="selecionarTarefa(tarefa)" *ngFor="let tarefa of tarefas" class="box-tarefas-atividade">
+      <label class="atividade-titulo">{{tarefa.taskDefinitionKey}}</label>
+      <label class="atividade-alvo">Leandro Pereira de Oliveira</label>
+      <label class="atividade-data">Criado 15/05/2024</label>
+    </div>
+  </div>
+  <div class="box-tarefas-fluxo">
+    <mat-tab-group animationDuration="0ms" [selectedIndex]="tab.value" (selectedIndexChange)="tab.setValue($event)">
+      <mat-tab *ngIf="exibeTab('preencherFormulario')" label="Formulário">
+        <div style="height: 100vh;">
+        <app-visao-formulario [fields]="fields" ></app-visao-formulario>
+      </div>
+      </mat-tab>
+      <mat-tab  *ngIf="exibeTab('validarFormulario')" label="Validar formulário">
+        <app-painel-validacao-formulario></app-painel-validacao-formulario>
+      </mat-tab>
+      <mat-tab [actived]="true" *ngIf="exibeTab('assinarDocumentos')" label="Assinar documentos">
+        <app-painel-validacao-documentos [documentos]="variaveis.documentos.value"></app-painel-validacao-documentos>
+      </mat-tab>
+      <mat-tab label="Histórico">
+
+      </mat-tab>
+      <mat-tab label="Diagrama">
+        <app-view-diagrama *ngIf="tarefaSelecionada" [tarefa]="tarefaSelecionada"></app-view-diagrama>
+      </mat-tab>
+      <mat-tab label="Descrição">
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

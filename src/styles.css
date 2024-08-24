@@ -1,13 +1,18 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 html,
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: "Inter", sans-serif !important;
   font-optical-sizing: auto;
   font-style: normal;
-  height: 100%;
+  height: 99vh;
+  overflow: hidden!important;
+  overflow-x: hidden!important;
+  overflow-y: hidden!important;
+  letter-spacing: 1px !important;
 }
 
 .material-symbols-outlined {
@@ -150,12 +155,12 @@ button {
   fill: red;
 }
 
-.djs-context-pad .entry:hover{
+.djs-context-pad .entry:hover {
   color: rgb(35, 155, 253);
   background-color: transparent;
 }
 
-.djs-context-pad .entry:hover{
+.djs-context-pad .entry:hover {
   background: red;
 }
 
@@ -164,28 +169,91 @@ button {
 }
 
 .djs-popup.color-picker .djs-popup-group {
-display: grid;
-grid: auto-flow / 1fr 1fr 1fr;
+  display: grid;
+  grid: auto-flow / 1fr 1fr 1fr;
 }
 
-.mdc-checkbox__native-control:checked~.mdc-checkbox__background
-{
-  background-color: #3adcb6!important;
-  border-color: #3adcb6!important;
+.mdc-checkbox__native-control:checked~.mdc-checkbox__background {
+  background-color: #3adcb6 !important;
+  border-color: #3adcb6 !important;
 
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mdc-checkbox__background {
-  left: 5px!important;
+  left: 5px !important;
 }
 
 .mdc-checkbox {
-  flex: 0 0 10px!important;
+  flex: 0 0 10px !important;
 }
 
-.mat-mdc-checkbox .mat-internal-form-field{
-  height: 32px!important;
+.mat-mdc-checkbox .mat-internal-form-field {
+  height: 32px !important;
+}
+
+.mdc-tab__text-label {
+  font-weight: 200;
+}
+
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+
+.p-timeline-event-opposite {
+  display: none !important;
+}
+
+
+.p-timeline-event-content,
+.p-timeline-event-opposite {
+  line-height: 1;
+}
+
+.custom-marker {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.pi {
+  line-height: 0;
+  font-size: 8px !important;
+}
+
+.p-timeline-event {
+  min-height: 53px !important;
+}
+
+.custom-marker {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@media screen and (max-width: 960px) {
+  .customized-timeline {
+    .p-timeline-event:nth-child(even) {
+      flex-direction: row !important;
+
+      .p-timeline-event-content {
+        text-align: left !important;
+      }
+    }
+
+    .p-timeline-event-opposite {
+      flex: 0;
+    }
+
+    .p-card {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.ng2-pdf-viewer-container {
+  box-sizing: content-box!important;
 }

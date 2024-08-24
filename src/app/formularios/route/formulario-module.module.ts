@@ -41,7 +41,7 @@ import { VisaoFormularioComponent } from '../views/visao-formulario/visao-formul
     PainelPropriedadesFormularioComponent,
     CriarFormularioCustomizadoComponent,
     TabelaComponent,
-    VisaoFormularioComponent,
+    VisaoFormularioComponent
    ],
   imports: [
     CommonModule,

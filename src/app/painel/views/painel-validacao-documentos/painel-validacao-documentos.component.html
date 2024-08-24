@@ -1,0 +1,32 @@
+<div class="box-validacao-documentos">
+  <div *ngIf="documentos && documentos.length" class="box-arquivo" style="width: 100%;">
+    <app-visualizar-pdf [height]="'92vh'" *ngIf="arquivo && arquivo.fileName" [url]="arquivo.fileName"></app-visualizar-pdf>
+  </div>
+  <div class="box-etapas">
+      <p-timeline [value]="files" styleClass="customized-timeline">
+        <ng-template pTemplate="marker" let-arquivo>
+          <span class="custom-marker shadow-2" [style.backgroundColor]="arquivo.color">
+            <i [ngClass]="arquivo.icon"></i>
+          </span>
+        </ng-template>
+        <ng-template pTemplate="content" let-arquivo>
+          <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
+            {{arquivo.nome}}
+          </p>
+          <span
+            style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
+        </ng-template>
+      </p-timeline>
+    <div class="box-acoes">
+      <span (click)="voltar()" class="material-symbols-outlined">
+        arrow_back
+      </span>
+      <button (click)="aprovar(true)" class="bt-hover">Aprovar</button>
+      <button (click)="aprovar(false)" class="bt-hover" style="background: #ff5061;">Reprovar</button>
+
+      <span (click)="avancar()" class="material-symbols-outlined">
+        arrow_forward
+      </span>
+    </div>
+  </div>
+</div>

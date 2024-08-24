@@ -1,0 +1,12 @@
+<div class="box-pdf-viewer" [style.height]="height">
+  <div class="pesquisa form-control">
+    <input (input)="search($event,false)" style="border: none;outline: none;" placeholder="Pesquisar no documento"
+      type="text">
+    <span class="material-symbols-outlined">
+      search
+    </span>
+  </div>
+
+  <pdf-viewer *ngIf="url != ''" [src]="url" [render-text]="true" [original-size]="false"
+    style="width: 100%; height: 100%; box-sizing: content-box" ></pdf-viewer>
+</div>

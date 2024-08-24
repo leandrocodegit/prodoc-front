@@ -35,9 +35,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets/**",
-              "src/index.php",
-              "src/.htaccess",
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
@@ -47,11 +45,6 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-extended-pdf-viewer/assets/",
                 "output": "/assets/"
-              },
-              {
-                "glob": "**/*",
-                "input": "public",
-                "output": "/assets/pdfs/*"
               }
             ],
             "styles": [
@@ -68,7 +61,9 @@
                "node_modules/@bpmn-io/form-js/dist/assets/form-js-editor.css",
                "node_modules/@bpmn-io/form-js/dist/assets/dragula.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
