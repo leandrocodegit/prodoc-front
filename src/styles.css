@@ -257,3 +257,26 @@ button {
 .ng2-pdf-viewer-container {
   box-sizing: content-box!important;
 }
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: #48a2b1;
+}
+
+.gt_switcher_wrapper{
+  right: 8px!important;
+}

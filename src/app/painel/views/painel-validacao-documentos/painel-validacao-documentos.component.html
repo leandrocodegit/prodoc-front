@@ -1,22 +1,9 @@
-<div class="box-validacao-documentos">
-  <div *ngIf="documentos && documentos.length" class="box-arquivo" style="width: 100%;">
-    <app-visualizar-pdf [height]="'92vh'" *ngIf="arquivo && arquivo.fileName" [url]="arquivo.fileName"></app-visualizar-pdf>
-  </div>
-  <div class="box-etapas">
-      <p-timeline [value]="files" styleClass="customized-timeline">
-        <ng-template pTemplate="marker" let-arquivo>
-          <span class="custom-marker shadow-2" [style.backgroundColor]="arquivo.color">
-            <i [ngClass]="arquivo.icon"></i>
-          </span>
-        </ng-template>
-        <ng-template pTemplate="content" let-arquivo>
-          <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
-            {{arquivo.nome}}
-          </p>
-          <span
-            style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
-        </ng-template>
-      </p-timeline>
+<div class="box-validacao" style="display: flex;">
+  <div class="box-validacao-documentos">
+    <div *ngIf="documentos && documentos.length" class="box-arquivo" style="width: 100%;">
+      <app-visualizar-pdf *ngIf="arquivo && arquivo.fileName" [height]="'87vh'"
+        [url]="arquivo.fileName"></app-visualizar-pdf>
+    </div>
     <div class="box-acoes">
       <span (click)="voltar()" class="material-symbols-outlined">
         arrow_back
@@ -28,5 +15,21 @@
         arrow_forward
       </span>
     </div>
+  </div>
+  <div class="box-etapas">
+    <p-timeline [value]="files" styleClass="customized-timeline">
+      <ng-template pTemplate="marker" let-arquivo>
+        <span class="custom-marker shadow-2" [style.backgroundColor]="arquivo.color">
+          <i [ngClass]="arquivo.icon"></i>
+        </span>
+      </ng-template>
+      <ng-template pTemplate="content" let-arquivo>
+        <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
+          {{arquivo.nome}}
+        </p>
+        <span
+          style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
+      </ng-template>
+    </p-timeline>
   </div>
 </div>

@@ -123,7 +123,6 @@ onTextSelect(event: any) {
     }
 
      this.pdfComponent.pdfViewer.getAllText().then(text => {
-
       if(text)
         this.texto = this.normalizeText(text);
 

@@ -14,7 +14,7 @@ export class PainelValidacaoDocumentosComponent implements OnInit {
   protected files: any [] = [];
 
   ngOnInit(): void {
-    //this.documentos.push('cv.pdf')
+    this.documentos.push('cv.pdf')
     if (this.documentos && this.documentos.length) {
       this.documentos.forEach(doc => {
         this.files.push(

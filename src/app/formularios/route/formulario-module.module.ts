@@ -24,7 +24,7 @@ import { PainelPropriedadesFormularioComponent } from '../views/painel-proprieda
 import { CriarFormularioCustomizadoComponent } from '../views/criar-formulario-customizado/criar-formulario-customizado.component';
 import { TabelaComponent } from '../views/componentes/tabela/tabela.component';
 import { RadioFieldComponent } from '../views/componentes/radio-field.component';
-import { VisaoFormularioComponent } from '../views/visao-formulario/visao-formulario.component';
+import { VisaoFormularioComponent } from '../../util/visao-formulario/visao-formulario.component';
 
 
 @NgModule({
