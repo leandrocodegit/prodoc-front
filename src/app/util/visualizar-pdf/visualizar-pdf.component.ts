@@ -51,9 +51,6 @@ export class VisualizarPdfComponent implements OnInit {
 
         if (text)
           this.texto = this.normalizeText(text);
-        console.log('Texto', this.texto);
-
-
       })
       clearInterval(delay)
     }, 3000);

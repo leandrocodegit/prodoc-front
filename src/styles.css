@@ -9,9 +9,9 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   height: 99vh;
-  overflow: hidden!important;
-  overflow-x: hidden!important;
-  overflow-y: hidden!important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
   letter-spacing: 1px !important;
 }
 
@@ -200,9 +200,20 @@ button {
 }
 
 .p-timeline-event-opposite {
-  display: none !important;
+  line-height: 0 !important;
+  cursor: pointer;
+  flex: 0 !important;
+  min-width: 50px !important;
 }
 
+.box-etapas .custom-marker:hover {
+  background: #519da0 !important;
+  color: #519da0 !important;
+}
+
+.fundo-verde {
+  background: #519da0 !important;
+}
 
 .p-timeline-event-content,
 .p-timeline-event-opposite {
@@ -212,6 +223,7 @@ button {
 .custom-marker {
   width: 20px !important;
   height: 20px !important;
+  cursor: pointer;
 }
 
 .pi {
@@ -255,7 +267,7 @@ button {
 }
 
 .ng2-pdf-viewer-container {
-  box-sizing: content-box!important;
+  box-sizing: content-box !important;
 }
 
 ::-webkit-scrollbar {
@@ -273,10 +285,10 @@ button {
 
 }
 
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
   background: #48a2b1;
 }
 
-.gt_switcher_wrapper{
-  right: 8px!important;
+.gt_switcher_wrapper {
+  right: 8px !important;
 }

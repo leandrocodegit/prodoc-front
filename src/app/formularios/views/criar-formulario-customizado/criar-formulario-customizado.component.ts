@@ -21,7 +21,7 @@ export class CriarFormularioCustomizadoComponent {
 
   items = [
     { titulo: 'Campo texto', icone: 'variables', field: 'text', type: 'textfield' },
-    { titulo: 'Campo de email', icone: 'email', field: 'email', type: 'textfield' },
+    { titulo: 'Campo email', icone: 'email', field: 'email', type: 'textfield' },
     { titulo: 'Campo telefone', icone: 'phone', field: 'tel', type: 'textfield' },
     { titulo: 'Area de texto', icone: 'text_ad', field: 'textarea', type: 'textarea' },
     { titulo: 'Data', icone: 'calendar_month', field: 'date', type: 'textfield' },

@@ -1,4 +1,4 @@
-<div style="padding: 40px 0;" *ngIf="fields.length">
+<div style="padding: 40px 0;overflow-y: auto;" *ngIf="fields.length">
   <div *ngFor="let field of fields" class="box-elemento-item" style="width: 99%;margin-left: 20px;">
     <app-endereco cdkDrag *ngIf="field.extends.subtype == 'endereco'" [field]="field" [form]="form"></app-endereco>
     <app-input-field cdkDrag *ngIf="field.type == 'textfield' && field.extends.subtype != 'cordenadas' && field.extends.subtype != 'endereco'" [field]="field" [form]="form"></app-input-field>

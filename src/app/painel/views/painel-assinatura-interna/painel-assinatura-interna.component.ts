@@ -1,12 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PrimeIcons } from 'primeng/api';
 
 @Component({
-  selector: 'app-painel-validacao-documentos',
-  templateUrl: './painel-validacao-documentos.component.html',
-  styleUrl: './painel-validacao-documentos.component.css'
+  selector: 'app-painel-assinatura-interna',
+  templateUrl: './painel-assinatura-interna.component.html',
+  styleUrl: './painel-assinatura-interna.component.css'
 })
-export class PainelValidacaoDocumentosComponent implements OnInit {
+export class PainelAssinaturaInternaComponent {
 
   @Input() documentos: any[] = [];
   protected arquivo: any;
@@ -14,7 +14,7 @@ export class PainelValidacaoDocumentosComponent implements OnInit {
   protected files: any[] = [];
 
   ngOnInit(): void {
-    // this.documentos.push('cv.pdf')
+     this.documentos.push('cv.pdf')
     if (this.documentos && this.documentos.length) {
       this.documentos.forEach(doc => {
         this.files.push(
@@ -60,7 +60,7 @@ export class PainelValidacaoDocumentosComponent implements OnInit {
 
   }
 
-  aprovar(aprovado: boolean) {
+  assinar(aprovado: boolean) {
     if (this.arquivo) {
       this.arquivo.status = status ? 'APROVADO' : 'REPROVADO'
       this.arquivo.icon = aprovado ? PrimeIcons.CHECK : PrimeIcons.TIMES
@@ -71,3 +71,4 @@ export class PainelValidacaoDocumentosComponent implements OnInit {
   }
 
 }
+

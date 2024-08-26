@@ -14,26 +14,29 @@ import { AssinaturaModule } from 'src/app/assinatura/route/assinatura-module.mod
 import { TimelineModule } from 'primeng/timeline';
 import { TabViewModule } from 'primeng/tabview';
 import { PainelValidacaoFormularioComponent } from '../views/painel-validacao-formulario/painel-validacao-formulario.component';
+import { PainelAssinaturaInternaComponent } from '../views/painel-assinatura-interna/painel-assinatura-interna.component';
 
 @NgModule({
   declarations: [
     PainelTarefasComponent,
     PainelValidacaoDocumentosComponent,
-    PainelValidacaoFormularioComponent
+    PainelValidacaoFormularioComponent,
+    PainelAssinaturaInternaComponent
   ],
   imports: [
     CommonModule,
     PainelRoutingModule,
     UtilModule,
     MatTabsModule,
-     NgxExtendedPdfViewerModule,
+    NgxExtendedPdfViewerModule,
     HttpClientModule,
     PdfViewerModule,
     ReactiveFormsModule,
     NgxExtendedPdfViewerModule,
     AssinaturaModule,
     TimelineModule,
-    TabViewModule
+    TabViewModule,
+    FormularioModule
 
   ]
 })

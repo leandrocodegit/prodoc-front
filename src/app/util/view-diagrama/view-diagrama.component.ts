@@ -18,7 +18,6 @@ export class ViewDiagramaComponent implements OnInit {
     private tarefaServiceService: TarefaServiceService
   ) {
     tarefaServiceService.reloadViewer.subscribe(tarefa => {
-      console.log(tarefa.taskDefinitionKey);
       this.tarefa = tarefa;
       this.carregarModelo()
     })
@@ -47,7 +46,7 @@ export class ViewDiagramaComponent implements OnInit {
           var elementRegistry: any = this.viewer.get('elementRegistry');
           var gfx = elementRegistry.getGraphics(this.tarefa.taskDefinitionKey)
           var html = gfx.innerHTML;
-          gfx.innerHTML = html.replaceAll('stroke: rgb(34, 36, 42);','stroke: #39b6ff;').replaceAll('fill: rgb(34, 36, 42);','stroke: #39b6ff;');
+          gfx.innerHTML = html.replaceAll('stroke: rgb(34, 36, 42);','stroke: #39b6ff;').replaceAll('fill: rgb(34, 36, 42);','fill: #39b6ff;');
 
         }
       });

@@ -13,11 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FluxoModule } from './fluxos/route/fluxo-module.module';
 import { AssinaturaModule } from './assinatura/route/assinatura-module.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PainelAssinaturaInternaComponent } from './painel/views/painel-assinatura-interna/painel-assinatura-interna.component';
 
 @NgModule({
   declarations: [
     AppComponent
-   ],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
