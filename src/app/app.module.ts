@@ -14,10 +14,12 @@ import { FluxoModule } from './fluxos/route/fluxo-module.module';
 import { AssinaturaModule } from './assinatura/route/assinatura-module.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PainelAssinaturaInternaComponent } from './painel/views/painel-assinatura-interna/painel-assinatura-interna.component';
+import { MenuBarInternoComponent } from './menu/views/menu-bar-interno/menu-bar-interno.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuBarInternoComponent
   ],
   imports: [
     BrowserModule,

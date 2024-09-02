@@ -1,64 +1,63 @@
-<div class="box-assinatura">
-  <div *ngIf="todosdocumentosAssinados()" class="box-assinatura-item-assinado">
-    <span class="material-symbols-outlined">
-      check_circle
-    </span>
-    <p>Obrigado, seus documentos foram assinados com sucesso.</p>
+<div class="box-assinar">
+  <div class="box-documento">
+    
   </div>
-  <div *ngIf="documentoSelecionado" class="box-assinatura-item" style="width: 80%;">
-    <pdf-viewer [src]="'assets/cv.pdf'"
-    [render-text]="true"
-    [original-size]="false"
-    style="width: 100%; height: 100vh"
-></pdf-viewer>
-  </div>
-  <div *ngIf="!todosdocumentosAssinados()" class="box-assinatura-detalhes" style="width: 20%;">
-    <div class="box-assinatura-detalhes-item" style="margin: 0;">
-      <img src="assets/pr-sp.jpeg" width="100">
-    </div>
-    <div class="box-assinatura-detalhes-item">
-      <div class="box-assinatura-detalhes-assinante">
-        <div class="box-assinatura-detalhes-assinante-item">
-          <label for="">Nome: </label>
-          <span>Leandro Pereira de Oliveira</span>
+  <div class="box-etapa-assinar">
+    <mat-stepper [animationDuration]="0">
+      <mat-step state="phone">
+        <div class="etapa-mover">
+          <p class="nome-documento">Licenciamento</p>
+          <p>Revisar e assinar</p>
+          <button mat-button matStepperNext>Assinar</button>
         </div>
-        <div class="box-assinatura-detalhes-assinante-item">
-          <label for="">Documento: </label>
-          <span>089.877.826-38</span>
-        </div>
-        <div class="box-assinatura-detalhes-assinante-item">
-          <label for="">Data de nascimento: </label>
-          <span>15-05-1988</span>
-        </div>
-        <div class="box-assinatura-detalhes-assinante-item">
-          <label for="">Email: </label>
-          <span>{{'leandro@gmail.com'}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="box-assinatura-detalhes-item box-assinatura-status">
-      <p-timeline [value]="documentos" styleClass="customized-timeline">
-        <ng-template pTemplate="marker" let-documento>
-          <span class="custom-marker shadow-2" [style.backgroundColor]="documento.color">
-            <i [ngClass]="documento.icon"></i>
-          </span>
-        </ng-template>
+      </mat-step>
+      <mat-step state="chat">
+        <div class="etapa-mover">
+          <p class="nome-documento">Oficio</p>
 
-        <ng-template pTemplate="content" let-documento>
-          <p style="margin:0; color: #4d4d4d;font-size: 13px;line-height: 1;">
-            {{documento.nome}}
-          </p>
-          <span
-            style="color: #a19263;    font-family: monospace;font-size: 12px;font: 13px Roboto, sans-serif!important;">06-08-2024</span>
-        </ng-template>
-      </p-timeline>
-    </div>
-    <div (click)="assinar()" class="box-assinatura-item box-assinatura-item-documento">
-      <span class="material-symbols-outlined">
-        {{documentoSelecionado ? 'encrypted' : 'check'}}
-      </span>
-      <p *ngIf="documentoSelecionado" style="margin: 0 10px;">Assinar {{documentoSelecionado.nome.toLowerCase()}}</p>
-      <p *ngIf="!documentoSelecionado" style="margin: 0 10px;">Finalizar</p>
-    </div>
+          <button mat-button matStepperNext>Assinar</button>
+        </div>
+      </mat-step>
+      <mat-step state="chat">
+        <div class="etapa-mover">
+          <p class="nome-documento">Contrato de locação</p>
+
+          <button mat-button matStepperNext>Assinar</button>
+        </div>
+      </mat-step>
+      <mat-step state="chat">
+        <div>
+          <p class="nome-documento">Contrado de venda</p>
+          <button mat-button matStepperNext>Assinar</button>
+        </div>
+      </mat-step>
+      <mat-step state="chat">
+        <div class="etapa-mover">
+          <p class="nome-documento">Contrato de responsabilidade</p>
+          <button mat-button matStepperNext>Assinar</button>
+        </div>
+      </mat-step>
+      <mat-step state="chat">
+        <div class="etapa-mover">
+          <p class="nome-documento">Termo de aceite</p>
+          <button mat-button matStepperNext>Assinar</button>
+        </div>
+      </mat-step>
+      <mat-step state="ckeck" [color]="'red'">
+        <p>Todos documentos foram assinados com sucesso</p>
+        <button mat-button matStepperNext>Concluir e fechar</button>
+      </mat-step>
+
+      <!-- Icon overrides. -->
+      <ng-template matStepperIcon="phone">
+        <mat-icon>call_end</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="chat">
+        <mat-icon>lock</mat-icon>
+      </ng-template>
+      <ng-template matStepperIcon="ckeck">
+        <mat-icon [color]="red" fontIcon="flag"></mat-icon>
+      </ng-template>
+    </mat-stepper>
   </div>
 </div>

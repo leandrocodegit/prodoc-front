@@ -14,7 +14,9 @@ export class PainelAssinaturaInternaComponent {
   protected files: any[] = [];
 
   ngOnInit(): void {
-     this.documentos.push('cv.pdf')
+     this.documentos.push('cv2.pdf')
+     this.documentos.push('cv3.pdf')
+
     if (this.documentos && this.documentos.length) {
       this.documentos.forEach(doc => {
         this.files.push(

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { PdfDocumentInfo } from 'ngx-extended-pdf-viewer';
@@ -13,6 +14,15 @@ import { PrimeIcons } from 'primeng/api';
 export class AssinarDocumentoComponent implements OnInit {
 
   @ViewChild(PdfViewerComponent) private pdfComponent!: PdfViewerComponent;
+
+etapa = '1'
+
+avanca(etapa: string){
+  this.etapa = etapa;
+}
+  
+  
+  isLinear = false;
 
   documentoSelecionado: any;
   totalPages: number | null = null;

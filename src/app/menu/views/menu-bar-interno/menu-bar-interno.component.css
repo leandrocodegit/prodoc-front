@@ -1,0 +1,41 @@
+.box-menu-bar {
+    width: 200px;
+    height: 100vh;
+    box-shadow: 0 0 4px 0 rgb(197 197 197); 
+}
+
+ol {
+    height: 100%;
+    list-style: none;
+    padding: 15px 0!important;
+}
+
+ol li {
+    display: flex;
+    align-items: flex-end;
+    margin: 3px 0;
+    box-shadow: 0 0 2px #cbc9c9;
+    padding: 7px;
+    cursor: pointer;
+    letter-spacing: 0.1rem; 
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    color: #595959;
+} 
+
+ol li:hover {
+    background: #edeffa;
+}
+
+li .material-symbols-outlined {
+    font-size: 26px;
+    margin-right: 10px;
+    color: #1b7fff;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+}

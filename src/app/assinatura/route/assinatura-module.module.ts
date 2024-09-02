@@ -10,6 +10,10 @@ import { UtilModule } from '../../util/route/util-module.module';
 import { AssinaturaRoutingModule } from './assinatura-routing.module';
 import { AssinarDocumentoComponent } from '../assinar-documento/assinar-documento.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { StepperModule } from 'primeng/stepper';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
   declarations: [
@@ -26,10 +30,19 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     DragDropModule,
     MatDialogModule,
     UtilModule,
-    NgxExtendedPdfViewerModule
-  ],
+    NgxExtendedPdfViewerModule,
+    StepperModule, 
+    MatStepperModule,
+    MatIconModule
+   ],
   exports: [
     AssinarDocumentoComponent
+  ],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
   ]
 })
 export class AssinaturaModule { }

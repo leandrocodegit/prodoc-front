@@ -13,6 +13,7 @@ body {
   overflow-x: hidden !important;
   overflow-y: hidden !important;
   letter-spacing: 1px !important;
+  background: #fafafa!important;
 }
 
 .material-symbols-outlined {

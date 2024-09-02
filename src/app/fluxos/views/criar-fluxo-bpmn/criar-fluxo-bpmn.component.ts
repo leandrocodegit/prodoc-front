@@ -8,8 +8,7 @@ import customTranslate from './customTranslate/customTranslate';
 import paletteProvider from './custom-palette';
 import contextPadProvider from './context-pad';
 import ColorPopupProvider from './ColorPopupProvider';
-import * as xml2js from 'xml2js';
-
+ 
 import {
   BpmnPropertiesPanelModule,
   BpmnPropertiesProviderModule,
@@ -474,12 +473,7 @@ export class CriarFluxoBpmnComponent implements OnInit {
   handleSave() {
      this.modeler.saveXML({ format: true }).then( result => {
       console.log(result.xml);
-      const parseString = xml2js.parseString;
-      parseString(result.xml, (err, data) => {
-        const bpmnData = data['bpmn:definitions']['bpmn:process'][0];
-        if (!bpmnData['bpmn:startEvent'] || !bpmnData['bpmn:endEvent']) {
-        }
-      });
+      
     });
   }
 }
