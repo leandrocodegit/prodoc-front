@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { PdfDocumentInfo } from 'ngx-extended-pdf-viewer';
 import { PrimeIcons } from 'primeng/api';
+import { PainelAssinaturaInternaComponent } from 'src/app/painel/views/painel-assinatura-interna/painel-assinatura-interna.component';
 
 @Component({
   selector: 'app-assinar-documento',
@@ -16,6 +18,7 @@ export class AssinarDocumentoComponent implements OnInit {
   @ViewChild(PdfViewerComponent) private pdfComponent!: PdfViewerComponent;
 
 etapa = '1'
+public showWidgets = false;
 
 avanca(etapa: string){
   this.etapa = etapa;
@@ -47,7 +50,8 @@ avanca(etapa: string){
 
   constructor(
     private http: HttpClient,
-    private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer,
+    private sheet: MatBottomSheet) { }
 
   ngOnInit(): void {
 
@@ -68,6 +72,7 @@ onTextSelect(event: any) {
 
 
 }
+
 
 
   onTextLayerRendered(event: any) {
@@ -121,7 +126,7 @@ onTextSelect(event: any) {
     if(this.pesquisa === ''){
       this.intens = []
     }
-    this.totalPages = this.pdfComponent.pdfViewer.pagesCount
+   // this.totalPages = this.pdfComponent.pdfViewer.pagesCount
   }
 
   onPageRendered(event: any): void {
@@ -153,6 +158,8 @@ onTextSelect(event: any) {
       this.documentoSelecionado.color = '#41d287'
       this.documentoSelecionado = this.documentos.find((doc: any) => doc.status === 'AGUARDANDO_ASSINATURA')
     }
+
+    this.sheet.open(PainelAssinaturaInternaComponent)
 
   }
 

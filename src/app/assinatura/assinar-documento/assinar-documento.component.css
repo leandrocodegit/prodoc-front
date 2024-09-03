@@ -1,21 +1,35 @@
-.box-assinar{
+.box-assinar {
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   justify-content: space-between;
 }
 
-.box-etapa-assinar{ 
+.box-documento {
+  height: 80%;
+  overflow-x: auto; 
 }
 
-.nome-documento{
+.box-etapa-assinar {}
+
+.nome-documento {
   font-weight: 700;
   font-size: 22px;
   color: #137aff;
   margin: 5px 0;
 }
 
+button {
+  width: 100%;
+  padding: 10px;
+  background: #068ef1;
+}
+
 @media (width: 600px) {
-    button{
-      width: 100%;
-    }
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #00c965;
+  }
 }

@@ -1,6 +1,17 @@
 <div class="box-assinar">
   <div class="box-documento">
-    
+    <ngx-extended-pdf-viewer 
+    [src]="documentoSelecionado.fileName" 
+    [height]="'auto'" [textLayer]="true"
+    [pageViewMode]="'infinite-scroll'"
+    [textLayer]="showWidgets"
+    (pagesLoaded)="onPagesLoaded($event)"
+    [showHandToolButton]="showWidgets"
+    [showToolbar]="showWidgets"
+    [sidebarVisible]="showWidgets"
+    [zoom]="'auto'"
+    [filenameForDownload]="documentoSelecionado.nome">
+    </ngx-extended-pdf-viewer>
   </div>
   <div class="box-etapa-assinar">
     <mat-stepper [animationDuration]="0">
@@ -8,12 +19,13 @@
         <div class="etapa-mover">
           <p class="nome-documento">Licenciamento</p>
           <p>Revisar e assinar</p>
-          <button mat-button matStepperNext>Assinar</button>
+          <button (click)="assinar()" mat-button matStepperNext>Assinar</button>
         </div>
       </mat-step>
       <mat-step state="chat">
         <div class="etapa-mover">
           <p class="nome-documento">Oficio</p>
+          <p>Revisar e assinar</p>
 
           <button mat-button matStepperNext>Assinar</button>
         </div>
@@ -21,6 +33,7 @@
       <mat-step state="chat">
         <div class="etapa-mover">
           <p class="nome-documento">Contrato de locação</p>
+          <p>Revisar e assinar</p>
 
           <button mat-button matStepperNext>Assinar</button>
         </div>
@@ -28,18 +41,24 @@
       <mat-step state="chat">
         <div>
           <p class="nome-documento">Contrado de venda</p>
+          <p>Revisar e assinar</p>
+
           <button mat-button matStepperNext>Assinar</button>
         </div>
       </mat-step>
       <mat-step state="chat">
         <div class="etapa-mover">
           <p class="nome-documento">Contrato de responsabilidade</p>
+          <p>Revisar e assinar</p>
+
           <button mat-button matStepperNext>Assinar</button>
         </div>
       </mat-step>
       <mat-step state="chat">
         <div class="etapa-mover">
           <p class="nome-documento">Termo de aceite</p>
+          <p>Revisar e assinar</p>
+
           <button mat-button matStepperNext>Assinar</button>
         </div>
       </mat-step>

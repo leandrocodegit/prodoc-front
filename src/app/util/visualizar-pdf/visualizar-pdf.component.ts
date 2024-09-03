@@ -46,14 +46,14 @@ export class VisualizarPdfComponent implements OnInit {
 
   onPdfLoadComplete(pdf: PDFDocumentProxy) {
 
-    var delay = setInterval(() => {
+/*     var delay = setInterval(() => {
       this.pdfComponent.pdfViewer.getAllText().then(text => {
 
         if (text)
           this.texto = this.normalizeText(text);
       })
       clearInterval(delay)
-    }, 3000);
+    }, 3000); */
 
   }
 
