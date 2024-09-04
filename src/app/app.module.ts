@@ -15,12 +15,14 @@ import { AssinaturaModule } from './assinatura/route/assinatura-module.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PainelAssinaturaInternaComponent } from './painel/views/painel-assinatura-interna/painel-assinatura-interna.component';
 import { MenuBarInternoComponent } from './menu/views/menu-bar-interno/menu-bar-interno.component';
-
+import { AssinaturaEscritaComponent } from './assinatura/assinatura-escrita/assinatura-escrita.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuBarInternoComponent
-  ],
+    MenuBarInternoComponent,
+    AssinaturaEscritaComponent,
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

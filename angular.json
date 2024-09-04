@@ -62,7 +62,9 @@
                "node_modules/@bpmn-io/form-js/dist/assets/dragula.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/assinatura.js" 
+
             ]
           },
           "configurations": {

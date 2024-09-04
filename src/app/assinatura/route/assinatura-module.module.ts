@@ -15,10 +15,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { EscreverComponent } from '../assinatura-escrita/escrever/escrever.component';
 
 @NgModule({
   declarations: [
-    AssinarDocumentoComponent
+    AssinarDocumentoComponent,
+    EscreverComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     StepperModule,
     MatStepperModule,
     MatIconModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    
   ],
   exports: [
     AssinarDocumentoComponent

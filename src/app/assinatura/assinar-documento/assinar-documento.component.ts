@@ -7,6 +7,9 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import { PdfDocumentInfo } from 'ngx-extended-pdf-viewer';
 import { PrimeIcons } from 'primeng/api';
 import { PainelAssinaturaInternaComponent } from 'src/app/painel/views/painel-assinatura-interna/painel-assinatura-interna.component';
+import { AssinaturaEscritaComponent } from '../assinatura-escrita/assinatura-escrita.component';
+import { fabric } from 'fabric';
+
 
 @Component({
   selector: 'app-assinar-documento',
@@ -54,6 +57,13 @@ avanca(etapa: string){
     private sheet: MatBottomSheet) { }
 
   ngOnInit(): void {
+    
+    var canvas = new fabric.Canvas('signatureCanvas', {
+      isDrawingMode: true
+    });
+    canvas.freeDrawingBrush.color = 'black';
+    canvas.freeDrawingBrush.width = 4;
+    
 
     this.documentoSelecionado = this.documentos[0]
 
@@ -159,7 +169,7 @@ onTextSelect(event: any) {
       this.documentoSelecionado = this.documentos.find((doc: any) => doc.status === 'AGUARDANDO_ASSINATURA')
     }
 
-    this.sheet.open(PainelAssinaturaInternaComponent)
+    this.sheet.open(AssinaturaEscritaComponent)
 
   }
 

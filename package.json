@@ -27,6 +27,7 @@
     "bpmn-js-properties-panel": "^5.10.0",
     "camunda-bpmn-moddle": "^7.0.1",
     "diagram-js": "^14.8.0",
+    "fabric": "^5.3.0",
     "leaflet": "^1.9.4",
     "ng2-pdf-viewer": "^10.2.2",
     "ngx-extended-pdf-viewer": "^21.1.2",
